@@ -1,0 +1,72 @@
+<app-card class="weekly" [titleText]="'goals.weekly.title' | transloco" [padded]="false">
+  <span card-actions>{{ 'goals.weekly.hint' | transloco }}</span>
+
+  <div class="weekly__content">
+    <div class="weekly__toolbar">
+      <div class="weekly__locked">
+        <span class="weekly__lock" aria-hidden="true">
+          <app-icon name="lock" [size]="14" [strokeWidth]="2.2" />
+        </span>
+        <span>{{ 'goals.weekly.locked' | transloco }}</span>
+      </div>
+      <app-button
+        iconName="plus"
+        [text]="'goals.weekly.add' | transloco"
+        (clicked)="added.emit()"
+      />
+    </div>
+
+    <div class="weekly__summary">
+      <span class="weekly__caption">{{ 'goals.weekly.progressCaption' | transloco }}</span>
+      <span class="weekly__summary-value">
+        {{ 'goals.weekly.progress' | transloco: { done: completedCount(), count: rows().length } }}
+      </span>
+    </div>
+
+    <ul class="weekly__list">
+      @for (row of rows(); track row.goal.id) {
+        <li class="weekly__goal" [class.weekly__goal--complete]="row.complete">
+          <span
+            class="weekly__badge"
+            [class.weekly__badge--complete]="row.complete"
+            role="img"
+            [attr.aria-label]="
+              (row.complete ? 'goals.weekly.badgeComplete' : 'goals.weekly.badgeLocked') | transloco
+            "
+          >
+            @if (row.complete) {
+              <app-icon name="check" [size]="18" [strokeWidth]="3.2" />
+            } @else {
+              <app-icon name="lock" [size]="14" [strokeWidth]="2.2" />
+            }
+          </span>
+          <div class="weekly__goal-body">
+            <div class="weekly__goal-head">
+              <span class="weekly__goal-title">{{ row.title }}</span>
+              <span class="weekly__goal-progress">{{ row.progressText }}</span>
+            </div>
+            <app-progress-bar [value]="row.percent" [tone]="row.tone" [label]="row.progressText" />
+            <div class="weekly__goal-foot">
+              <span>{{ row.source }}</span>
+              @if (row.complete) {
+                <app-tag color="success" [labelText]="'goals.weekly.complete' | transloco" />
+              } @else if (row.toGo) {
+                <span class="weekly__to-go">{{ row.toGo }}</span>
+              }
+            </div>
+          </div>
+          <app-button
+            variant="icon"
+            size="sm"
+            iconName="pencil"
+            [ariaLabel]="'goals.edit' | transloco: { title: row.title }"
+            [tooltip]="'goals.edit' | transloco: { title: row.title }"
+            (clicked)="edited.emit(row.goal)"
+          />
+        </li>
+      } @empty {
+        <li class="weekly__empty">{{ 'goals.weekly.empty' | transloco }}</li>
+      }
+    </ul>
+  </div>
+</app-card>

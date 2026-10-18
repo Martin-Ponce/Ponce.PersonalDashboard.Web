@@ -1,0 +1,103 @@
+<app-modal
+  [titleText]="'common.filters.title' | transloco: { period: periodLabel() }"
+  [width]="620"
+  (closed)="isOpen.set(false)"
+>
+  <div class="filters">
+    <!-- Sorting -->
+    <section class="filters__section">
+      <span id="application-filters-sort" class="filters__caption">
+        {{ 'common.filters.sortBy' | transloco }}
+      </span>
+      <app-segmented-control
+        labelledBy="application-filters-sort"
+        [options]="sortOptions()"
+        [value]="draft().sort"
+        (valueChange)="update({ sort: $event })"
+      />
+      <app-segmented-control
+        [options]="directionOptions()"
+        [value]="draft().direction"
+        [ariaLabel]="'common.filters.order' | transloco"
+        (valueChange)="update({ direction: $event })"
+      />
+    </section>
+
+    <div class="filters__divider"></div>
+
+    <!-- Company or role -->
+    <section class="filters__section">
+      <label class="filters__caption" for="application-filters-search">
+        {{ 'jobApplications.filters.search' | transloco }}
+      </label>
+      <app-entry
+        inputId="application-filters-search"
+        [placeholder]="'jobApplications.filters.searchPlaceholder' | transloco"
+        [ngModel]="draft().search"
+        (ngModelChange)="update({ search: $event })"
+      />
+    </section>
+
+    <!-- Status -->
+    <section class="filters__section">
+      <span class="filters__caption">{{ 'jobApplications.filters.status' | transloco }}</span>
+      <div class="filters__chips">
+        @for (status of statuses; track status.value) {
+          <app-chip
+            [label]="'jobApplications.status.' + status.value | transloco"
+            [selected]="draft().statuses.includes(status.value)"
+            (clicked)="toggleStatus(status.value)"
+          />
+        }
+      </div>
+    </section>
+
+    <!-- Work mode -->
+    <section class="filters__section">
+      <span class="filters__caption">{{ 'jobApplications.filters.workMode' | transloco }}</span>
+      <div class="filters__chips">
+        @for (mode of workModes; track mode) {
+          <app-chip
+            [label]="'jobApplications.workModes.' + mode | transloco"
+            [selected]="draft().workModes.includes(mode)"
+            (clicked)="toggleWorkMode(mode)"
+          />
+        }
+      </div>
+    </section>
+
+    <!-- City (only the ones in this month's applications) -->
+    @if (cities().length) {
+      <section class="filters__section">
+        <span class="filters__caption">{{ 'jobApplications.filters.city' | transloco }}</span>
+        <div class="filters__chips">
+          @for (city of cities(); track city) {
+            <app-chip
+              [label]="cityLabel(city)"
+              [selected]="draft().cities.includes(city)"
+              (clicked)="toggleCity(city)"
+            />
+          }
+        </div>
+      </section>
+    }
+
+    <div class="filters__footer">
+      <app-button
+        variant="link"
+        [text]="'common.filters.resetAll' | transloco"
+        (clicked)="resetAll()"
+      />
+      <div class="filters__footer-actions">
+        <app-button variant="secondary" [text]="'common.cancel' | transloco" (clicked)="close()" />
+        <app-button
+          [text]="
+            'jobApplications.filters.show.' + (matchCount() === 1 ? 'one' : 'other')
+              | transloco: { count: matchCount() }
+          "
+          (clicked)="apply()"
+        />
+      </div>
+    </div>
+  </div>
+</app-modal>

@@ -1,0 +1,210 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.month-grid {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+}
+
+.month-grid__weekdays,
+.month-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.month-grid__grid {
+  flex-grow: 1;
+  grid-template-rows: repeat(6, minmax(84px, 1fr));
+}
+
+.month-grid__weekday {
+  padding: 4px 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.month-grid__day {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 8px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--color-white-soft);
+  background: var(--color-surface-glass);
+  box-shadow: 0 1px 3px var(--color-shadow-soft);
+  font-family: inherit;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.month-grid__day:hover {
+  filter: brightness(1.03);
+}
+
+.month-grid__day:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.month-grid__day--events {
+  border-color: var(--color-accent-line);
+  background:
+    linear-gradient(var(--color-accent-wash), var(--color-accent-wash)), var(--color-white-soft);
+}
+
+.month-grid__day--past {
+  border-color: var(--color-border);
+  background: var(--pattern-past);
+}
+
+.month-grid__day--past.month-grid__day--events {
+  border-color: var(--color-border);
+  background:
+    linear-gradient(var(--color-accent-wash), var(--color-accent-wash)), var(--pattern-past);
+}
+
+.month-grid__day--today {
+  box-shadow:
+    0 0 0 2px var(--color-accent),
+    0 4px 12px var(--color-shadow);
+}
+
+.month-grid__day--outside {
+  opacity: 0.5;
+}
+
+.month-grid__day-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.month-grid__day-number {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.month-grid__day--past .month-grid__day-number {
+  color: var(--color-neutral);
+}
+
+.month-grid__today-pill {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  background: var(--gradient-gloss), var(--color-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}
+
+.month-grid__missed-dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-highlight-glow),
+    var(--color-highlight-deep)
+  );
+  box-shadow: 0 0 0 2px var(--color-white);
+}
+
+.month-grid__chip {
+  display: block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-on-accent);
+  background: var(--gradient-gloss), var(--color-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}
+
+.month-grid__chip--missed {
+  color: var(--color-pill-warning-text);
+  background: linear-gradient(var(--color-pill-warning-start), var(--color-pill-warning-end));
+  text-shadow: none;
+}
+
+.month-grid__chip--done {
+  color: var(--color-text-muted);
+  background: var(--color-row-stripe);
+  text-decoration: line-through;
+  text-shadow: none;
+}
+
+.month-grid__more {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Phones: days show their events as colored bars ---------- */
+@media (max-width: 760px) {
+  .month-grid {
+    padding: 8px;
+  }
+
+  .month-grid__weekdays,
+  .month-grid__grid {
+    gap: 4px;
+  }
+
+  .month-grid__grid {
+    grid-template-rows: repeat(6, minmax(56px, auto));
+  }
+
+  .month-grid__weekday {
+    letter-spacing: 0;
+  }
+
+  .month-grid__day {
+    gap: 3px;
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  .month-grid__day-number {
+    font-size: 14px;
+  }
+
+  .month-grid__today-pill,
+  .month-grid__more {
+    display: none;
+  }
+
+  .month-grid__missed-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .month-grid__chip {
+    height: 5px;
+    padding: 0;
+    border-radius: 3px;
+    font-size: 0;
+  }
+}

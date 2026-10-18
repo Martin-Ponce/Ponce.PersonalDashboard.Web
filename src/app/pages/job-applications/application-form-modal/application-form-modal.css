@@ -1,0 +1,115 @@
+.application-form__date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: var(--color-text-muted);
+}
+
+.application-form__date span {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.application-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.application-form__wide {
+  grid-column: 1 / -1;
+}
+
+.application-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.application-form__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ---------- Status picker ---------- */
+.status-picker {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.status-picker__option {
+  min-height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--gradient-surface);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.status-picker__option:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.status-picker__option[aria-checked='true'] {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.status-picker__option--info {
+  background: linear-gradient(var(--color-pill-info-start), var(--color-pill-info-end));
+  color: var(--color-pill-info-text);
+  border-color: var(--color-pill-info-border);
+}
+
+.status-picker__option--warning {
+  background: linear-gradient(var(--color-pill-warning-start), var(--color-pill-warning-end));
+  color: var(--color-pill-warning-text);
+  border-color: var(--color-pill-warning-border);
+}
+
+.status-picker__option--success {
+  background: linear-gradient(var(--color-pill-success-start), var(--color-pill-success-end));
+  color: var(--color-pill-success-text);
+  border-color: var(--color-pill-success-border);
+}
+
+.status-picker__option--neutral {
+  background: linear-gradient(var(--color-pill-neutral-start), var(--color-pill-neutral-end));
+  color: var(--color-pill-neutral-text);
+  border-color: var(--color-pill-neutral-border);
+}
+
+.application-form__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.application-form__footer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .application-form__grid,
+  .status-picker {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

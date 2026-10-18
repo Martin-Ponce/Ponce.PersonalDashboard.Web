@@ -1,0 +1,44 @@
+<div class="shell wallpaper">
+  <app-card [padded]="false">
+    <header class="shell__header">
+      <div class="shell__brand">
+        <app-logo />
+        <div class="shell__brand-text">
+          <div class="shell__app-name">{{ appName }}</div>
+          <div class="shell__tagline">{{ appTagline }}</div>
+        </div>
+      </div>
+      <app-version-badge />
+    </header>
+  </app-card>
+
+  <div class="shell__body">
+    <aside class="shell__aside">
+      <app-sidebar [routes]="navRoutes()" />
+
+      <app-card>
+        <div class="shell__profile">
+          <app-avatar
+            [name]="profile().name"
+            [picture]="profile().picture"
+            [imageUrl]="profile().imageUrl"
+          />
+          <div class="shell__profile-name">{{ profile().name }}</div>
+          <app-status [enabled]="profile().online" />
+          <app-button
+            class="shell__sign-out"
+            variant="secondary"
+            size="sm"
+            iconName="log-out"
+            [text]="'shell.signOut' | transloco"
+            (clicked)="signOut()"
+          />
+        </div>
+      </app-card>
+    </aside>
+
+    <main class="shell__main">
+      <router-outlet />
+    </main>
+  </div>
+</div>

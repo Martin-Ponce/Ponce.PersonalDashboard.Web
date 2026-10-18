@@ -1,0 +1,8 @@
+/* Theme wallpaper for full-screen layouts, add class="wallpaper" to the root. */
+.wallpaper {
+  background: var(--color-backdrop) url('../assets/backgrounds/sky_bg.jpg') center / cover no-repeat;
+}
+
+:host-context([data-theme='night']) .wallpaper {
+  background-image: url('../assets/backgrounds/night_bg.jpg');
+}

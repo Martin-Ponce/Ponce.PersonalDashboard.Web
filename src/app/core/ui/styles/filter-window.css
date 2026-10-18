@@ -1,0 +1,61 @@
+/* Shared layout for the Filter & sort windows. */
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filters__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filters__caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.filters__divider {
+  height: 1px;
+  background: var(--color-track);
+}
+
+.filters__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filters__range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filters__range app-entry {
+  flex: 1;
+}
+
+.filters__range-to {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.filters__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.filters__footer-actions {
+  display: flex;
+  gap: 10px;
+}

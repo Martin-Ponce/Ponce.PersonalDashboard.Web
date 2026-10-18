@@ -1,0 +1,716 @@
+{
+  "language": {
+    "label": "Språk",
+    "en": "English",
+    "es": "Español",
+    "sv": "Svenska"
+  },
+  "theme": {
+    "label": "Tema",
+    "option": "Temat {{name}}",
+    "sky": "Himmel",
+    "night": "Natt"
+  },
+  "common": {
+    "dateFormats": {
+      "long": "EEEE d MMMM y",
+      "monthYear": "MMMM y"
+    },
+    "relativeDays": {
+      "today": "Idag",
+      "tomorrow": "Imorgon",
+      "yesterday": "Igår",
+      "days": {
+        "one": "{{count}} dag",
+        "other": "{{count}} dagar"
+      },
+      "weeks": {
+        "one": "{{count}} vecka",
+        "other": "{{count}} veckor"
+      },
+      "in": "Om {{value}}",
+      "ago": "För {{value}} sedan"
+    },
+    "close": "Stäng",
+    "cancel": "Avbryt",
+    "edit": "Redigera",
+    "noData": "Inga data",
+    "noOptions": "Inga alternativ tillgängliga",
+    "online": "Online",
+    "offline": "Offline",
+    "deleteConfirmation": {
+      "title": "Ta bort den här posten?",
+      "subtitle": "Det går inte att ångra.",
+      "confirm": "Ja, ta bort"
+    },
+    "filters": {
+      "title": "Filtrera och sortera · {{period}}",
+      "sortBy": "Sortera efter",
+      "order": "Ordning",
+      "resetAll": "Återställ allt",
+      "button": "Filtrera och sortera",
+      "clear": "Rensa",
+      "filtered": "Filtrerat",
+      "sortSummary": "Sorterat efter {{field}}, {{order}}",
+      "noMatchText": "Prova att ta bort ett filter, eller rensa alla."
+    },
+    "monthPicker": {
+      "previous": "Föregående månad",
+      "next": "Nästa månad",
+      "year": "År",
+      "month": "Månad"
+    },
+    "pagination": {
+      "showing": "Visar",
+      "of": "av {{total}}",
+      "pages": "Sidor",
+      "previous": "Föregående sida",
+      "next": "Nästa sida",
+      "page": "Sida {{page}}",
+      "rowsPerPage": "Rader per sida"
+    }
+  },
+  "calendar": {
+    "subtitle": "Klicka på en dag för att se, lägga till eller slutföra dess händelser",
+    "loadError": "Vi kunde inte läsa in din kalender. Kontrollera anslutningen och försök igen.",
+    "saveError": "Vi kunde inte spara dina ändringar. Försök igen.",
+    "today": "Idag",
+    "eventCount": {
+      "one": "{{count}} händelse",
+      "other": "{{count}} händelser"
+    },
+    "completedWord": {
+      "one": "slutförd",
+      "other": "slutförda"
+    },
+    "more": "+{{count}} till",
+    "cell": {
+      "noEvents": "inga händelser",
+      "passed": "har passerat",
+      "unfinished": "Har oavslutade händelser"
+    },
+    "upcoming": {
+      "title": "Kommande",
+      "from": "Från idag",
+      "empty": "Inget på gång. Klicka på en dag för att lägga till en händelse."
+    },
+    "legend": {
+      "title": "Teckenförklaring",
+      "today": "Idag",
+      "events": "Har händelser",
+      "empty": "Inga händelser",
+      "past": "Har redan passerat",
+      "missed": "Passerad med oavslutade händelser",
+      "eventsIn": {
+        "one": "händelse i {{month}}",
+        "other": "händelser i {{month}}"
+      }
+    },
+    "day": {
+      "pastNote": "Det här datumet har passerat.",
+      "pastNoteUnfinished": "Det här datumet har passerat. Du kan fortfarande slutföra eller ta bort det som är kvar.",
+      "events": "Händelser",
+      "allDay": "Heldag",
+      "notCompleted": "Inte slutförd",
+      "completed": "Slutförd",
+      "markDone": "Markera som klar: {{title}}",
+      "markNotDone": "Markera som ej klar: {{title}}",
+      "delete": "Ta bort {{title}}",
+      "deleteTitle": "Ta bort ”{{title}}”? Det går inte att ångra.",
+      "keep": "Behåll",
+      "empty": "Inget planerat för den här dagen än.",
+      "addTitle": "Lägg till en händelse",
+      "title": "Titel",
+      "titlePlaceholder": "t.ex. Betala telefonräkningen",
+      "time": "Tid",
+      "note": "Anteckning",
+      "notePlaceholder": "t.ex. Ta med dokumenten",
+      "optional": "(valfritt)",
+      "add": "Lägg till",
+      "titleRequired": "Ge händelsen en titel.",
+      "done": "Klar"
+    }
+  },
+  "goals": {
+    "subtitle": "Bocka av dagliga mål så räknas de mot dina veckomål",
+    "thisWeek": "Den här veckan",
+    "edit": "Redigera {{title}}",
+    "resetIn": {
+      "one": "Veckomålen nollställs imorgon",
+      "other": "Veckomålen nollställs om {{count}} dagar"
+    },
+    "loadError": "Vi kunde inte läsa in dina mål. Kontrollera anslutningen och försök igen.",
+    "saveError": "Vi kunde inte spara dina ändringar. Försök igen.",
+    "units": {
+      "Minutes": {
+        "one": "{{count}} minut",
+        "other": "{{count}} minuter"
+      },
+      "Hours": {
+        "one": "{{count}} timme",
+        "other": "{{count}} timmar"
+      },
+      "Times": {
+        "one": "{{count}} gång",
+        "other": "{{count}} gånger"
+      }
+    },
+    "unitNames": {
+      "Minutes": "minuter",
+      "Hours": "timmar",
+      "Times": "gånger"
+    },
+    "schedule": {
+      "everyDay": "Varje dag",
+      "weekdays": "Vardagar",
+      "weekends": "Helger",
+      "none": "Inga bestämda dagar"
+    },
+    "daily": {
+      "title": "Dagliga mål",
+      "hint": "Upprepas varje dag · nollställs vid midnatt",
+      "dayTabs": "Veckodag",
+      "add": "Lägg till dagligt mål",
+      "todayHeading": "Idag · {{day}}",
+      "today": "Idag",
+      "future": "Inte tillgänglig än",
+      "past": "{{day}} (du kan fortfarande registrera det)",
+      "progress": "{{done}} av {{planned}} planerade klara",
+      "bonus": "{{count}} extra",
+      "missedWeek": {
+        "one": "{{count}} missat den här veckan",
+        "other": "{{count}} missade den här veckan"
+      },
+      "legend": {
+        "done": "Klart",
+        "planned": "Planerat",
+        "missed": "Missat",
+        "off": "Inte planerat (fortfarande valfritt)"
+      },
+      "tags": {
+        "missed": "Missat",
+        "bonus": "Extra",
+        "notCreated": "Inte skapat än",
+        "optionalToday": "Valfritt idag",
+        "optionalOn": "Valfritt på {{day}}",
+        "plannedToday": "Planerat idag",
+        "plannedOn": "Planerat på {{day}}"
+      },
+      "addsTo": "Räknas mot {{goals}}",
+      "complete": "Slutför {{title}} för {{day}}",
+      "undo": "Ångra {{title}} för {{day}}",
+      "weekLabel": "{{title}}: planerat {{schedule}}. Klart på {{days}}.",
+      "noDays": "inga dagar än",
+      "dots": {
+        "done": "{{day}}: klart",
+        "bonus": "{{day}}: klart (extra)",
+        "missed": "{{day}}: missat",
+        "planned": "{{day}}: planerat",
+        "off": "{{day}}: inte planerat"
+      },
+      "empty": "Inga dagliga mål än. Lägg till ett för att börja bygga en vana."
+    },
+    "weekly": {
+      "title": "Veckomål",
+      "hint": "Fylls av dina dagliga mål · nollställs på måndag",
+      "locked": "Veckomål kan inte bockas av för hand. Varje dag du slutför deras dagliga mål räknas här.",
+      "add": "Lägg till veckomål",
+      "progressCaption": "Veckans framsteg",
+      "progress": "{{done}} av {{count}} mål klara",
+      "of": "{{value}} av {{target}}",
+      "from": "Från dagligt mål: {{title}} ({{amount}} varje gång)",
+      "complete": "Klart för den här veckan!",
+      "toGo": {
+        "one": "{{amount}} kvar",
+        "other": "{{amount}} kvar"
+      },
+      "badgeComplete": "Slutfört",
+      "badgeLocked": "Låst: uppdateras från ett dagligt mål",
+      "empty": "Inga veckomål än. Lägg till ett för att bestämma hur många dagar i veckan ett dagligt mål ska göras."
+    },
+    "form": {
+      "newDaily": "Nytt dagligt mål",
+      "newWeekly": "Nytt veckomål",
+      "editDaily": "Redigera dagligt mål",
+      "editWeekly": "Redigera veckomål",
+      "goal": "Mål",
+      "dailyPlaceholder": "t.ex. Gå till gymmet",
+      "weeklyPlaceholder": "Valfritt · använder det dagliga målets namn",
+      "plannedDays": "Planerade dagar",
+      "plannedHint": "Du kan fortfarande bocka av målet andra dagar. Planerade dagar är bara en påminnelse, och missar du en markeras den.",
+      "source": "Dagligt mål",
+      "sourcePlaceholder": "Välj ett dagligt mål",
+      "sourceOption": "{{title}} ({{amount}} per dag)",
+      "dailyAmount": "Mängd varje dag",
+      "weeklyTarget": "Dagar per vecka",
+      "weeklyTargetHint": "Hur många dagar i veckan det dagliga målet måste slutföras. Tar du bort det dagliga målet tas även det här målet bort.",
+      "unit": "Enhet",
+      "nameRequired": "Ge målet ett namn.",
+      "amountRequired": "Ange en mängd större än noll.",
+      "targetRequired": "Ange ett heltal mellan 1 och {{max}} dagar.",
+      "sourceRequired": "Välj det dagliga mål som det här hör till. Varje dagligt mål kan ha ett veckomål.",
+      "daysRequired": "Välj minst en planerad dag.",
+      "deleteGoal": "Ta bort mål",
+      "saveChanges": "Spara ändringar",
+      "saveGoal": "Spara mål",
+      "deleteTitle": "Ta bort ”{{title}}”?",
+      "deleteWeekly": "Veckans framsteg försvinner; det dagliga målet finns kvar. Det går inte att ångra.",
+      "deleteDaily": "Dess historik tas bort. Det går inte att ångra.",
+      "deleteDailyLinked": "Dess historik och dess veckomål tas också bort. Det går inte att ångra.",
+      "keep": "Behåll det"
+    }
+  },
+  "jobApplications": {
+    "status": {
+      "Applied": "Ansökt",
+      "Interview": "Intervju",
+      "Offer": "Erbjudande",
+      "Rejected": "Avslag"
+    },
+    "subtitle": "Varje ansökan du har skickat, månad för månad",
+    "add": "Lägg till ansökan",
+    "listTitle": "Ansökningar · {{period}}",
+    "count": {
+      "one": "{{count}} ansökan",
+      "other": "{{count}} ansökningar"
+    },
+    "countFiltered": {
+      "one": "{{shown}} av {{count}} ansökan",
+      "other": "{{shown}} av {{count}} ansökningar"
+    },
+    "pipeline": "Pipeline",
+    "workModes": {
+      "OnSite": "På plats",
+      "Hybrid": "Hybrid",
+      "Remote": "Distans"
+    },
+    "columns": {
+      "company": "Företag",
+      "role": "Roll",
+      "status": "Status",
+      "location": "Plats",
+      "appliedOn": "Ansökningsdatum",
+      "salary": "Lön",
+      "updatedAt": "Senast ändrad",
+      "actions": "Åtgärder"
+    },
+    "editLabel": "Redigera ansökan till {{company}}",
+    "emptyTitle": "Inga ansökningar i {{period}}",
+    "emptyText": "Använd Lägg till ansökan för att registrera den första den här månaden.",
+    "loadError": "Vi kunde inte läsa in månadens ansökningar. Kontrollera anslutningen och försök igen.",
+    "saveError": "Vi kunde inte spara dina ändringar. Försök igen.",
+    "noMatchTitle": "Inga ansökningar matchar dina filter",
+    "filteredSummary": "Visar {{shown}} av {{count}} ansökningar · summorna nedan gäller hela månaden",
+    "totals": {
+      "sent": "Skickade ansökningar",
+      "active": "Fortfarande aktiva",
+      "responseRate": "Svarsfrekvens"
+    },
+    "form": {
+      "newTitle": "Ny ansökan",
+      "editTitle": "Redigera ansökan",
+      "company": "Företag",
+      "companyPlaceholder": "t.ex. Northwind Labs",
+      "role": "Roll",
+      "rolePlaceholder": "t.ex. Produktdesigner",
+      "location": "Plats",
+      "locationPlaceholder": "t.ex. Stockholm",
+      "salary": "Lön (valfritt)",
+      "salaryPlaceholder": "t.ex. 45000",
+      "workMode": "Arbetsform",
+      "status": "Status",
+      "companyRequired": "Ange företagets namn.",
+      "roleRequired": "Ange rollen du sökte.",
+      "salaryInvalid": "Lämna lönen tom eller ange ett belopp större än noll.",
+      "deleteApplication": "Ta bort ansökan",
+      "saveChanges": "Spara ändringar",
+      "saveApplication": "Spara ansökan",
+      "deleteTitle": "Ta bort ansökan till {{company}}?",
+      "deleteText": "Den tas bort från {{period}} och siffrorna uppdateras. Det går inte att ångra.",
+      "keep": "Behåll den"
+    },
+    "filters": {
+      "search": "Företag eller roll innehåller",
+      "searchPlaceholder": "t.ex. designer",
+      "status": "Status",
+      "workMode": "Arbetsform",
+      "city": "Stad",
+      "show": {
+        "one": "Visa {{count}} ansökan",
+        "other": "Visa {{count}} ansökningar"
+      },
+      "fields": {
+        "appliedOn": "Ansökningsdatum",
+        "updatedAt": "Senast ändrad",
+        "company": "Företag",
+        "role": "Roll",
+        "status": "Status"
+      },
+      "orders": {
+        "appliedOn": {
+          "asc": "Äldst först",
+          "desc": "Nyast först"
+        },
+        "updatedAt": {
+          "asc": "Äldst först",
+          "desc": "Senast först"
+        },
+        "company": {
+          "asc": "A till Ö",
+          "desc": "Ö till A"
+        },
+        "role": {
+          "asc": "A till Ö",
+          "desc": "Ö till A"
+        },
+        "status": {
+          "asc": "Ansökt till avslag",
+          "desc": "Avslag till ansökt"
+        }
+      }
+    }
+  },
+  "spending": {
+    "categories": {
+      "Housing": "Boende",
+      "Groceries": "Matvaror",
+      "EatingOut": "Äta ute",
+      "Transport": "Transport",
+      "Subscriptions": "Prenumerationer",
+      "Shopping": "Shopping",
+      "Gifts": "Presenter",
+      "Travel": "Resor",
+      "Electronics": "Elektronik",
+      "Freelance": "Frilans",
+      "Sales": "Försäljning",
+      "Refunds": "Återbetalningar",
+      "GiftsReceived": "Mottagna presenter"
+    },
+    "types": {
+      "Expense": "Utgift",
+      "Income": "Inkomst"
+    }
+  },
+  "overview": {
+    "greetings": {
+      "welcomeBack": "Hej {{name}}, välkommen tillbaka!",
+      "yo": "Tjena! {{name}}",
+      "whatsUp": "Läget, {{name}}?",
+      "heyThere": "Hallå där, {{name}}!",
+      "goodToSeeYou": "Kul att se dig, {{name}}",
+      "lookWhosBack": "Se vem som är tillbaka, {{name}}!",
+      "howdy": "Tjabba, {{name}}!",
+      "readyToRoll": "Redo att köra, {{name}}?",
+      "helloAgain": "Hej igen, {{name}}",
+      "niceToHaveYouBack": "Skönt att ha dig tillbaka, {{name}}"
+    },
+    "loadError": "Vi kunde inte läsa in din översikt. Kontrollera anslutningen och försök igen.",
+    "customize": "Anpassa",
+    "nothingShown": "Här finns inget än. Öppna {{customize}} för att välja vad som visas.",
+    "summary": {
+      "label": "I korthet",
+      "balance": "Kontosaldo",
+      "balanceChange": "{{amount}} den här månaden",
+      "spent": "Spenderat den här månaden",
+      "noBudget": "Ingen budget satt",
+      "leftInBudget": "{{amount}} kvar av budgeten",
+      "overBudget": "{{amount}} över budget",
+      "nextDate": "Nästa viktiga datum",
+      "nothingComingUp": "Inget på gång",
+      "activeApplications": "Aktiva ansökningar",
+      "newThisWeek": {
+        "one": "{{count}} ny den här veckan",
+        "other": "{{count}} nya den här veckan"
+      },
+      "interviews": "Inbokade intervjuer",
+      "nextInterview": "Nästa: {{date}}",
+      "noInterviews": "Inga inbokade"
+    },
+    "spending": {
+      "title": "Utgifter per månad · senaste {{months}} månaderna",
+      "viewAll": "Visa alla",
+      "chartLabel": "Totalt spenderat per månad",
+      "budget": "Budget för {{month}}",
+      "notSet": "Inte satt",
+      "budgetUsed": "Använd budget den här månaden",
+      "nothingSpent": "Inget spenderat än",
+      "category": "Kategori",
+      "amount": "Belopp"
+    },
+    "dates": {
+      "title": "Kommande datum",
+      "add": "+ Lägg till",
+      "addLabel": "Lägg till ett datum",
+      "soon": "SNART!",
+      "empty": "Inga kommande datum."
+    },
+    "applications": {
+      "title": "Jobbansökningar",
+      "empty": "Inga ansökningar än",
+      "counts": {
+        "Applied": {
+          "one": "{{count}} ansökt",
+          "other": "{{count}} ansökta"
+        },
+        "Interview": {
+          "one": "{{count}} intervju",
+          "other": "{{count}} intervjuer"
+        },
+        "Offer": {
+          "one": "{{count}} erbjudande",
+          "other": "{{count}} erbjudanden"
+        },
+        "Rejected": {
+          "one": "{{count}} avslag",
+          "other": "{{count}} avslag"
+        }
+      },
+      "columns": {
+        "company": "Företag",
+        "role": "Roll",
+        "status": "Status",
+        "location": "Plats",
+        "appliedOn": "Ansökningsdatum",
+        "updatedAt": "Senast ändrad"
+      }
+    },
+    "customizeWindow": {
+      "title": "Anpassa översikten",
+      "close": "Stäng anpassningsfönstret",
+      "show": "Visa i översikten",
+      "reset": "Återställ",
+      "done": "Klar",
+      "widgets": {
+        "summary": "Sammanfattning i korthet",
+        "spending": "Utgifter per månad",
+        "dates": "Kommande datum",
+        "applications": "Jobbansökningar"
+      }
+    }
+  },
+  "login": {
+    "pageTitle": "Logga in",
+    "title": "Välkommen",
+    "button": "Logga in med identitetsleverantör",
+    "redirecting": "Tar dig till inloggningen…",
+    "secureNote": "Du loggar in på en säker sida och kommer sedan direkt tillbaka hit.",
+    "unreachable": "Vi kunde inte öppna inloggningssidan. Kontrollera anslutningen och försök igen.",
+    "sessionExpired": "Din session har avslutats. Logga in igen för att fortsätta.",
+    "tryAgain": "Försök igen",
+    "callback": {
+      "pageTitle": "Loggar in",
+      "signingIn": "Loggar in dig…",
+      "failed": "Inloggningen slutfördes inte."
+    }
+  },
+  "nav": {
+    "sections": "Avsnitt",
+    "overview": "Översikt",
+    "finances": "Ekonomi",
+    "calendar": "Kalender",
+    "jobApplications": "Jobbansökningar",
+    "settings": "Inställningar",
+    "goals": "Mål"
+  },
+  "shell": {
+    "version": "Version",
+    "signOut": "Logga ut"
+  },
+  "underConstruction": {
+    "badge": "UNDER UPPBYGGNAD",
+    "text": "Sidan {{page}} kommer snart.",
+    "back": "Tillbaka till översikten"
+  },
+  "finances": {
+    "subtitle": "Alla utgifter och inkomster du har registrerat, månad för månad",
+    "accountBalance": "Kontosaldo",
+    "addEntry": "Lägg till post",
+    "entriesTitle": "Poster · {{period}}",
+    "count": {
+      "one": "{{count}} post",
+      "other": "{{count}} poster"
+    },
+    "budgetFor": "Budget för {{period}}",
+    "notSet": "Inte satt",
+    "used": "Använt",
+    "budgetUsed": "Använd budget",
+    "setBudget": "Sätt budget",
+    "editBudget": "Ändra budget",
+    "emptyTitle": "Inga poster för {{period}}",
+    "emptyText": "Använd Lägg till post för att registrera din första post den här månaden.",
+    "columns": {
+      "name": "Namn",
+      "type": "Typ",
+      "category": "Kategori",
+      "amount": "Belopp",
+      "createdAt": "Skapad",
+      "actions": "Åtgärder",
+      "updatedAt": "Senast ändrad"
+    },
+    "editEntryLabel": "Redigera {{name}}",
+    "totalSpent": "Totalt spenderat",
+    "balance": "Budgetsaldo",
+    "noBudget": "Ingen budget satt",
+    "overBudget": "Över budget",
+    "withinBudget": "Inom budget",
+    "entryForm": {
+      "newTitle": "Ny post",
+      "editTitle": "Redigera post",
+      "registeringIn": "Registreras i",
+      "entryFrom": "Post från",
+      "name": "Namn",
+      "namePlaceholder": "t.ex. Veckohandling",
+      "amount": "Belopp",
+      "type": "Typ",
+      "category": "Kategori",
+      "nameRequired": "Ge posten ett namn.",
+      "amountRequired": "Ange ett belopp större än noll.",
+      "deleteTitle": "Ta bort ”{{name}}”?",
+      "deleteText": "Den tas bort från {{period}} och summorna uppdateras. Det går inte att ångra.",
+      "keepEntry": "Behåll posten",
+      "deleteEntry": "Ta bort post",
+      "saveChanges": "Spara ändringar",
+      "saveEntry": "Spara post"
+    },
+    "budgetForm": {
+      "setTitle": "Sätt budget · {{period}}",
+      "editTitle": "Ändra budget · {{period}}",
+      "required": "Ange en budget större än noll.",
+      "save": "Spara budget",
+      "caption": "Budget för",
+      "firstTime": "Den här månaden har ingen budget än. Sätt en för att börja lägga till poster.",
+      "amountLabel": "Månadsbudget",
+      "sameAsLast": "Samma som förra månaden ({{amount}})",
+      "spentPlus10": "Spenderat hittills + 10 % ({{amount}})",
+      "alreadySpent": "Redan spenderat {{amount}} den här månaden",
+      "nothingSpent": "Inget spenderat än den här månaden",
+      "used": "{{percent}} % använt",
+      "set": "Sätt budget"
+    },
+    "setBudgetToStart": "Sätt budget för att börja",
+    "loadError": "Vi kunde inte läsa in månadens poster. Kontrollera anslutningen och försök igen.",
+    "saveError": "Vi kunde inte spara dina ändringar. Försök igen.",
+    "countFiltered": {
+      "one": "{{shown}} av {{count}} post",
+      "other": "{{shown}} av {{count}} poster"
+    },
+    "noBudgetTitle": "Ingen budget för {{period}} än",
+    "noBudgetText": "Varje månad har sin egen budget. Sätt en för att börja lägga till poster.",
+    "setBudgetFor": "Sätt budget för {{period}}",
+    "noMatchTitle": "Inga poster matchar dina filter",
+    "totalEarned": "Totalt intjänat",
+    "net": "Netto den här månaden",
+    "filteredSummary": "Visar {{shown}} av {{count}} poster · netto {{net}} för de visade posterna",
+    "filters": {
+      "nameContains": "Namnet innehåller",
+      "namePlaceholder": "t.ex. matvaror",
+      "type": "Typ",
+      "category": "Kategori",
+      "amount": "Belopp",
+      "min": "Min",
+      "max": "Max",
+      "minLabel": "Lägsta belopp",
+      "maxLabel": "Högsta belopp",
+      "to": "till",
+      "show": {
+        "one": "Visa {{count}} post",
+        "other": "Visa {{count}} poster"
+      },
+      "fields": {
+        "createdAt": "Skapad",
+        "updatedAt": "Senast ändrad",
+        "name": "Namn",
+        "amount": "Belopp",
+        "category": "Kategori"
+      },
+      "orders": {
+        "createdAt": {
+          "asc": "Äldst först",
+          "desc": "Nyast först"
+        },
+        "updatedAt": {
+          "asc": "Äldst först",
+          "desc": "Senast först"
+        },
+        "name": {
+          "asc": "A till Ö",
+          "desc": "Ö till A"
+        },
+        "amount": {
+          "asc": "Lägst först",
+          "desc": "Högst först"
+        },
+        "category": {
+          "asc": "Utgifter först",
+          "desc": "Inkomster först"
+        }
+      }
+    }
+  },
+  "settings": {
+    "subtitle": "Få {{app}} att se ut och fungera som du vill",
+    "status": {
+      "unsaved": "Osparade ändringar",
+      "saved": "Ändringarna sparades",
+      "allSaved": "Alla ändringar sparade",
+      "saveError": "Kunde inte spara · försök igen"
+    },
+    "discard": "Ignorera",
+    "save": "Spara ändringar",
+    "preview": "Förhandsvisning",
+    "theme": {
+      "title": "Tema",
+      "description": "Bakgrund och accentfärg"
+    },
+    "picture": {
+      "title": "Profil",
+      "description": "Visas i sidofältet",
+      "displayName": "Visningsnamn",
+      "displayNameHint": "Visas i sidofältet och översikten. Lämna det tomt för att använda ditt användarnamn ({{userName}}).",
+      "options": {
+        "initials": "Initialer",
+        "bubbles": "Bubblor",
+        "leaf": "Löv",
+        "sun": "Sol",
+        "waves": "Vågor",
+        "mountains": "Toppar",
+        "moon": "Måne",
+        "flower": "Blomma",
+        "planet": "Planet"
+      },
+      "upload": "Ladda upp",
+      "uploadSoon": "Snart kan du ladda upp ditt eget foto",
+      "soon": "SNART"
+    },
+    "language": {
+      "title": "Språk",
+      "description": "Text och datumformat",
+      "displayLanguage": "Visningsspråk",
+      "dateFormat": "Datumformat"
+    },
+    "currency": {
+      "title": "Valuta",
+      "description": "Används i ekonomi och budgetar",
+      "main": "Huvudvaluta",
+      "showDecimals": "Visa decimaler",
+      "showDecimalsHint": "Visa ören och cent i belopp"
+    },
+    "timeZone": {
+      "title": "Tidszon",
+      "description": "Förfallodatum och påminnelser följer den",
+      "auto": "Ställ in automatiskt",
+      "autoHint": "Använd enhetens tidszon",
+      "label": "Tidszon",
+      "localTime": "Lokal tid nu",
+      "zones": {
+        "madrid": "Madrid",
+        "london": "London",
+        "newYork": "New York",
+        "mexicoCity": "Mexico City",
+        "losAngeles": "Los Angeles",
+        "tokyo": "Tokyo",
+        "utc": "UTC"
+      }
+    }
+  }
+}

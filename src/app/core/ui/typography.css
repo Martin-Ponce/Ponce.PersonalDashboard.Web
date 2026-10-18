@@ -1,0 +1,6 @@
+/* App font tokens, use these instead of hard-coded font families. */
+:root {
+  --font-display: 'Nunito', 'Segoe UI', sans-serif;
+  --font-body: 'Segoe UI', 'Nunito Sans', sans-serif;
+  --font-mono: 'Courier New', monospace;
+}

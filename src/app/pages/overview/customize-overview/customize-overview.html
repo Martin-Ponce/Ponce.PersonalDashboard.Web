@@ -1,0 +1,44 @@
+<app-card
+  variant="popover"
+  [titleText]="'overview.customizeWindow.title' | transloco"
+  [padded]="false"
+>
+  <app-exit-button
+    card-actions
+    [tooltip]="'overview.customizeWindow.close' | transloco"
+    (clicked)="closed.emit()"
+  />
+
+  <div class="customize">
+    <section class="customize__section">
+      <div class="customize__caption">{{ 'theme.label' | transloco }}</div>
+      <app-theme-settings />
+    </section>
+
+    <section class="customize__section">
+      <div class="customize__caption">{{ 'language.label' | transloco }}</div>
+      <app-language-settings />
+    </section>
+
+    <section class="customize__section">
+      <div class="customize__caption">{{ 'overview.customizeWindow.show' | transloco }}</div>
+      @for (widget of widgetOptions; track widget.key) {
+        <app-checkbox
+          [label]="widget.labelKey | transloco"
+          [checked]="widgets()[widget.key]"
+          (toggled)="toggleWidget(widget.key, $event)"
+        />
+      }
+    </section>
+
+    <div class="customize__actions">
+      <app-button
+        variant="secondary"
+        size="sm"
+        [text]="'overview.customizeWindow.reset' | transloco"
+        (clicked)="reset()"
+      />
+      <app-button [text]="'overview.customizeWindow.done' | transloco" (clicked)="closed.emit()" />
+    </div>
+  </div>
+</app-card>

@@ -1,0 +1,120 @@
+<div class="calendar">
+  <app-page-header
+    [header]="'nav.calendar' | transloco"
+    [subtitle]="'calendar.subtitle' | transloco"
+  >
+    <div class="calendar__month-nav">
+      <app-button
+        variant="secondary"
+        [text]="'calendar.today' | transloco"
+        (clicked)="goToToday()"
+      />
+      <app-button
+        variant="icon"
+        iconName="chevron-left"
+        [ariaLabel]="'common.monthPicker.previous' | transloco"
+        (clicked)="shiftMonth(-1)"
+      />
+      <div class="calendar__month-title" aria-live="polite">{{ monthTitle() }}</div>
+      <app-button
+        variant="icon"
+        iconName="chevron-right"
+        [ariaLabel]="'common.monthPicker.next' | transloco"
+        (clicked)="shiftMonth(1)"
+      />
+    </div>
+  </app-page-header>
+
+  @if (errorMessage()) {
+    <app-banner [text]="errorMessage()" />
+  }
+
+  <div class="calendar__body">
+    <!-- Month grid -->
+    <app-card class="calendar__month" [padded]="false">
+      <app-month-grid
+        [label]="monthTitle()"
+        [weekdays]="weekdays()"
+        [cells]="cells()"
+        (dayClicked)="openDayOf($event)"
+      />
+    </app-card>
+
+    <aside class="calendar__side">
+      <!-- Coming up -->
+      <app-card
+        class="calendar__upcoming"
+        [titleText]="'calendar.upcoming.title' | transloco"
+        [padded]="false"
+      >
+        <span card-actions>{{ 'calendar.upcoming.from' | transloco }}</span>
+
+        <ul class="calendar__upcoming-list">
+          @for (item of upcomingItems(); track item.event.id) {
+            <li>
+              <button type="button" class="calendar__upcoming-item" (click)="openEvent(item.event)">
+                <app-date-chip [month]="item.month" [day]="item.day" [highlight]="item.soon" />
+                <span class="calendar__upcoming-text">
+                  <span class="calendar__upcoming-title">{{ item.event.title }}</span>
+                  <span class="calendar__upcoming-meta">
+                    {{ item.event.date | daysUntil: 'phrase' }}
+                    @if (item.time) {
+                      · {{ item.time }}
+                    }
+                  </span>
+                </span>
+              </button>
+            </li>
+          } @empty {
+            <li class="calendar__upcoming-empty">{{ 'calendar.upcoming.empty' | transloco }}</li>
+          }
+        </ul>
+      </app-card>
+
+      <!-- Legend -->
+      <app-card class="calendar__legend">
+        <section class="calendar__legend-body" aria-labelledby="calendar-legend-title">
+          <h2 id="calendar-legend-title" class="calendar__caption">
+            {{ 'calendar.legend.title' | transloco }}
+          </h2>
+          <div class="calendar__legend-grid">
+            <span class="calendar__legend-item">
+              <span class="calendar__swatch calendar__swatch--today"></span>
+              {{ 'calendar.legend.today' | transloco }}
+            </span>
+            <span class="calendar__legend-item">
+              <span class="calendar__swatch calendar__swatch--events"></span>
+              {{ 'calendar.legend.events' | transloco }}
+            </span>
+            <span class="calendar__legend-item">
+              <span class="calendar__swatch"></span>
+              {{ 'calendar.legend.empty' | transloco }}
+            </span>
+            <span class="calendar__legend-item">
+              <span class="calendar__swatch calendar__swatch--past"></span>
+              {{ 'calendar.legend.past' | transloco }}
+            </span>
+            <span class="calendar__legend-item calendar__legend-item--wide">
+              <span class="calendar__missed-dot calendar__missed-dot--legend"></span>
+              {{ 'calendar.legend.missed' | transloco }}
+            </span>
+          </div>
+          <div class="calendar__divider"></div>
+          <p class="calendar__summary">
+            <b>{{ monthEventCount() }}</b> {{ monthEventsLabel() }} ·
+            <b class="calendar__summary-done">{{ monthDoneCount() }}</b> {{ monthDoneLabel() }}
+          </p>
+        </section>
+      </app-card>
+    </aside>
+  </div>
+
+  <app-day-modal
+    [day]="openDay()"
+    [events]="openDayEvents()"
+    [past]="openDayPast()"
+    (added)="onEventAdded($event)"
+    (doneChanged)="onDoneChanged($event)"
+    (deleted)="onEventDeleted($event)"
+  />
+</div>

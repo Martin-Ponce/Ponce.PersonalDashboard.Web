@@ -1,0 +1,24 @@
+<app-welcome-screen>
+  @if (state() === 'redirecting') {
+    <app-busy-indicator class="login__action" [text]="'login.redirecting' | transloco" />
+  } @else {
+    @if (state() === 'failed') {
+      <app-banner class="login__action" [text]="'login.unreachable' | transloco" />
+    } @else if (expired) {
+      <app-banner class="login__action" [text]="'login.sessionExpired' | transloco" />
+    }
+    <app-button
+      class="login__action"
+      size="lg"
+      iconName="shield-check"
+      [fullWidth]="true"
+      [text]="(state() === 'failed' ? 'login.tryAgain' : 'login.button') | transloco"
+      (clicked)="login()"
+    />
+  }
+
+  <p class="login__note">
+    <app-icon name="lock" [size]="14" [strokeWidth]="2.2" />
+    <span>{{ 'login.secureNote' | transloco }}</span>
+  </p>
+</app-welcome-screen>

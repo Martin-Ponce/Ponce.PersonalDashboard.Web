@@ -1,0 +1,107 @@
+<app-modal [titleText]="title()" [width]="560">
+  @if (past()) {
+    <div class="day__past-note">
+      <app-icon name="clock" [size]="18" />
+      <span>{{ pastNote() }}</span>
+    </div>
+  }
+
+  <!-- Events -->
+  <div class="day__section-head">
+    <span class="day__caption">{{ 'calendar.day.events' | transloco }}</span>
+    <span class="day__count">{{ countLabel() }}</span>
+  </div>
+
+  <ul class="day__events">
+    @for (event of events(); track event.id) {
+      <li>
+        @if (confirmingId() === event.id) {
+          <app-delete-confirmation
+            [compact]="true"
+            [title]="'calendar.day.deleteTitle' | transloco: { title: event.title }"
+            [cancelText]="'calendar.day.keep' | transloco"
+            (cancelled)="confirmingId.set(null)"
+            (confirmed)="confirmDelete(event)"
+          />
+        } @else {
+          <div class="day__event">
+            <app-check-button
+              [checked]="isDone(event)"
+              [ariaLabel]="
+                (isDone(event) ? 'calendar.day.markNotDone' : 'calendar.day.markDone')
+                  | transloco: { title: event.title }
+              "
+              (toggled)="toggleDone(event)"
+            />
+            <div class="day__event-text">
+              <span class="day__event-title" [class.day__event-title--done]="isDone(event)">
+                {{ event.title }}
+              </span>
+              <span class="day__event-meta">{{ meta(event) }}</span>
+            </div>
+            @if (isDone(event)) {
+              <app-tag [labelText]="'calendar.day.completed' | transloco" color="success" />
+            }
+            <app-button
+              variant="danger-icon"
+              size="sm"
+              iconName="trash"
+              [ariaLabel]="'calendar.day.delete' | transloco: { title: event.title }"
+              [tooltip]="'calendar.day.delete' | transloco: { title: event.title }"
+              (clicked)="confirmingId.set(event.id)"
+            />
+          </div>
+        }
+      </li>
+    } @empty {
+      <li class="day__empty">{{ 'calendar.day.empty' | transloco }}</li>
+    }
+  </ul>
+
+  <!-- Add an event -->
+  <app-card variant="inset" [padded]="false">
+    <form class="day__add" [formGroup]="form" (ngSubmit)="add()">
+      <span class="day__caption">{{ 'calendar.day.addTitle' | transloco }}</span>
+      <div class="day__add-row">
+        <div class="day__field day__field--title">
+          <label class="day__label" for="day-event-title">
+            {{ 'calendar.day.title' | transloco }}
+          </label>
+          <app-entry
+            #titleEntry
+            inputId="day-event-title"
+            [placeholder]="'calendar.day.titlePlaceholder' | transloco"
+            formControlName="title"
+            [showValidation]="tried()"
+          />
+        </div>
+        <div class="day__field day__field--time">
+          <label class="day__label" for="day-event-time">
+            {{ 'calendar.day.time' | transloco }}
+            <span class="day__optional">{{ 'calendar.day.optional' | transloco }}</span>
+          </label>
+          <app-entry inputId="day-event-time" type="time" formControlName="time" />
+        </div>
+        <app-button type="submit" [text]="'calendar.day.add' | transloco" />
+      </div>
+      <div class="day__field">
+        <label class="day__label" for="day-event-note">
+          {{ 'calendar.day.note' | transloco }}
+          <span class="day__optional">{{ 'calendar.day.optional' | transloco }}</span>
+        </label>
+        <app-entry
+          inputId="day-event-note"
+          [placeholder]="'calendar.day.notePlaceholder' | transloco"
+          formControlName="note"
+        />
+      </div>
+      @if (tried() && form.controls.title.invalid) {
+        <app-banner [text]="'calendar.day.titleRequired' | transloco" />
+      }
+    </form>
+  </app-card>
+
+  <div class="day__footer">
+    <app-button variant="secondary" [text]="'calendar.day.done' | transloco" (clicked)="close()" />
+  </div>
+</app-modal>

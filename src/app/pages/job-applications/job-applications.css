@@ -1,0 +1,244 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.applications {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.applications__card {
+  flex-grow: 1;
+  min-height: 420px;
+}
+
+.applications__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Toolbar ---------- */
+.applications__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-track);
+}
+
+.applications__period {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.applications__filtering {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 12px;
+}
+
+.applications__sort-summary {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.applications__pipeline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 10px 16px;
+}
+
+.applications__pipeline-caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Applications ---------- */
+.applications__scroll {
+  flex-grow: 1;
+  min-height: 220px;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.applications__table {
+  font-size: 14px;
+}
+
+.applications__list {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+}
+
+.applications__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--color-row-stripe);
+  font-size: 13px;
+}
+
+.applications__item-head,
+.applications__item-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.applications__item-foot {
+  color: var(--color-text-muted);
+}
+
+.applications__company {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.applications__initial {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-image: var(--gradient-gloss);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}
+
+.applications__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.applications__empty-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ---------- Pages ---------- */
+.applications__pager {
+  flex-shrink: 0;
+  margin: 10px 20px 0;
+}
+
+/* ---------- Totals ---------- */
+.applications__totals {
+  flex-shrink: 0;
+  margin: 8px 20px 20px;
+}
+
+.applications__totals-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 14px 18px;
+}
+
+.applications__filtered {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.applications__filtered-text {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.applications__divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-border);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 900px) {
+  :host,
+  .applications {
+    height: auto;
+  }
+
+  .applications__card {
+    min-height: 0;
+  }
+
+  .applications__scroll {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 760px) {
+  .applications__pager {
+    margin: 10px 16px 0;
+  }
+
+  .applications__filtering {
+    margin-left: 0;
+  }
+
+  .applications__toolbar,
+  .applications__scroll {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .applications__table {
+    display: none;
+  }
+
+  .applications__list {
+    display: flex;
+  }
+
+  .applications__totals {
+    margin: 8px 16px 16px;
+  }
+
+  .applications__totals-body {
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .applications__divider {
+    display: none;
+  }
+}

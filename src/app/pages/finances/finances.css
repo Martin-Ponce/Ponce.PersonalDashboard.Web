@@ -1,0 +1,277 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.finances {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.finances__entries {
+  flex-grow: 1;
+  min-height: 420px;
+}
+
+.finances__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Toolbar ---------- */
+.finances__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-track);
+}
+
+.finances__period {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.finances__filtering {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 12px;
+}
+
+.finances__sort-summary {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.finances__budget {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+}
+
+.finances__budget-usage {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.finances__budget-used {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Entries ---------- */
+.finances__scroll {
+  flex-grow: 1;
+  min-height: 220px;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.finances__table {
+  font-size: 14px;
+}
+
+.finances__list {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+}
+
+.finances__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--color-row-stripe);
+  font-size: 13px;
+}
+
+.finances__item-head,
+.finances__item-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.finances__item-name,
+.finances__item-amount {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-danger-text);
+}
+
+.finances__item-amount--income {
+  color: var(--color-success-text);
+}
+
+.finances__item-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.finances__item-foot {
+  color: var(--color-text-muted);
+}
+
+.finances__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finances__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px var(--color-white-soft);
+}
+
+.finances__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.finances__empty-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ---------- Pages ---------- */
+.finances__pager {
+  flex-shrink: 0;
+  margin: 10px 20px 0;
+}
+
+/* ---------- Totals ---------- */
+.finances__totals {
+  flex-shrink: 0;
+  margin: 8px 20px 20px;
+}
+
+.finances__totals-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 14px 18px;
+}
+
+.finances__filtered {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.finances__filtered-text {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* Set via innerHTML, so it needs ::ng-deep */
+.finances__filtered-text ::ng-deep b {
+  color: var(--color-text);
+}
+
+.finances__net {
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white-soft);
+}
+
+.finances__divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-border);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 900px) {
+  :host,
+  .finances {
+    height: auto;
+  }
+
+  .finances__entries {
+    min-height: 0;
+  }
+
+  .finances__scroll {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 760px) {
+  .finances__pager {
+    margin: 10px 16px 0;
+  }
+
+  .finances__filtering {
+    margin-left: 0;
+  }
+
+  .finances__toolbar,
+  .finances__scroll {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .finances__period {
+    flex-wrap: wrap;
+  }
+
+  .finances__budget {
+    flex-wrap: wrap;
+  }
+
+  .finances__table {
+    display: none;
+  }
+
+  .finances__list {
+    display: flex;
+  }
+
+  .finances__totals {
+    margin: 8px 16px 16px;
+  }
+
+  .finances__totals-body {
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .finances__divider {
+    display: none;
+  }
+}

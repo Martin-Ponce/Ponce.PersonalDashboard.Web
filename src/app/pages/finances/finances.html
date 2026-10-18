@@ -1,0 +1,232 @@
+<div class="finances">
+  <app-page-header
+    [header]="'nav.finances' | transloco"
+    [subtitle]="'finances.subtitle' | transloco"
+    [buttonText]="(needsBudget() ? 'finances.setBudgetToStart' : 'finances.addEntry') | transloco"
+    buttonIcon="plus"
+    (buttonClick)="addOrSetBudget()"
+  >
+    <app-key-figure
+      iconName="wallet"
+      [caption]="'finances.accountBalance' | transloco"
+      [value]="accountBalanceLabel()"
+      [tone]="accountBalanceTotal() < 0 ? 'danger' : 'default'"
+    />
+  </app-page-header>
+
+  <app-card
+    class="finances__entries"
+    [titleText]="'finances.entriesTitle' | transloco: { period: periodLabel() }"
+    [padded]="false"
+  >
+    <span card-actions>{{ countLabel() }}</span>
+
+    <div class="finances__content">
+      @if (errorMessage()) {
+        <app-banner [text]="errorMessage()" />
+      }
+
+      <!-- Month, filters and budget -->
+      <div class="finances__toolbar">
+        <div class="finances__period">
+          <app-month-picker
+            idPrefix="finances"
+            [(year)]="year"
+            [(month)]="month"
+            [minYear]="minYear"
+            [maxYear]="maxYear"
+          />
+
+          <div class="finances__filtering">
+            <app-button
+              variant="secondary"
+              iconName="filter"
+              [text]="'common.filters.button' | transloco"
+              [active]="activeFilters() > 0"
+              [badge]="activeFilters() || undefined"
+              (clicked)="openFilters()"
+            />
+            @if (activeFilters()) {
+              <app-button
+                variant="link"
+                [text]="'common.filters.clear' | transloco"
+                (clicked)="clearFilters()"
+              />
+            }
+            <span class="finances__sort-summary">{{ sortSummary() }}</span>
+          </div>
+        </div>
+
+        <app-card variant="inset" [padded]="false">
+          <div class="finances__budget">
+            <app-metric
+              [caption]="'finances.budgetFor' | transloco: { period: periodLabel() }"
+              [value]="budgetLabel()"
+            />
+            <div class="finances__budget-usage">
+              <div class="finances__budget-used">
+                <span>{{ 'finances.used' | transloco }}</span>
+                <b>{{ budgetUsed() === null ? '—' : budgetUsed() + '%' }}</b>
+              </div>
+              <app-progress-bar
+                size="sm"
+                [value]="budgetUsed() ?? 0"
+                [warnAt]="budgetThresholds.warning"
+                [dangerAt]="budgetThresholds.danger"
+                [label]="'finances.budgetUsed' | transloco"
+              />
+            </div>
+            <app-button
+              [variant]="needsBudget() ? 'primary' : 'secondary'"
+              size="sm"
+              [text]="(needsBudget() ? 'finances.setBudget' : 'common.edit') | transloco"
+              [ariaLabel]="
+                (needsBudget() ? 'finances.setBudget' : 'finances.editBudget') | transloco
+              "
+              (clicked)="openBudget()"
+            />
+          </div>
+        </app-card>
+      </div>
+
+      <!-- Entries -->
+      <div class="finances__scroll">
+        <!-- Table on wide screens -->
+        <app-table
+          class="finances__table"
+          [columns]="columns()"
+          [data]="pagedEntries()"
+          [locale]="locale()"
+          [stickyHeader]="true"
+          [divided]="true"
+          [emptyTitle]="emptyState().title"
+          [emptyText]="emptyState().text"
+        >
+          @if (emptyState().setBudget) {
+            <app-button
+              table-empty-actions
+              [text]="'finances.setBudgetFor' | transloco: { period: periodLabel() }"
+              (clicked)="openBudget()"
+            />
+          }
+        </app-table>
+
+        <!-- Cards on narrow screens -->
+        <ul class="finances__list">
+          @for (entry of pagedEntries(); track entry.id) {
+            <li class="finances__item">
+              <div class="finances__item-head">
+                <span class="finances__item-name">{{ entry.description }}</span>
+                <span
+                  class="finances__item-amount"
+                  [class.finances__item-amount--income]="entry.type === 'Income'"
+                >
+                  {{ signedAmount(entry) }}
+                </span>
+              </div>
+              <div class="finances__item-tags">
+                <app-tag [labelText]="typeLabel(entry.type)" [color]="typeColor(entry.type)" />
+                <span class="finances__category">
+                  <span
+                    class="finances__dot"
+                    [style.background-color]="categoryColor(entry.categoryId)"
+                  ></span>
+                  {{ categoryLabel(entry.categoryId) }}
+                </span>
+              </div>
+              <div class="finances__item-foot">
+                <span>{{ entry.createdAtUtc | date: datePattern() : undefined : locale() }}</span>
+                <app-button
+                  variant="icon"
+                  size="sm"
+                  iconName="pencil"
+                  [ariaLabel]="'finances.editEntryLabel' | transloco: { name: entry.description }"
+                  (clicked)="editEntry(entry)"
+                />
+              </div>
+            </li>
+          } @empty {
+            <li class="finances__empty">
+              <div class="finances__empty-title">{{ emptyState().title }}</div>
+              <div>{{ emptyState().text }}</div>
+              @if (emptyState().setBudget) {
+                <app-button
+                  [text]="'finances.setBudgetFor' | transloco: { period: periodLabel() }"
+                  (clicked)="openBudget()"
+                />
+              }
+            </li>
+          }
+        </ul>
+      </div>
+
+      @if (matchCount()) {
+        <app-paginator
+          class="finances__pager"
+          [total]="matchCount()"
+          [page]="page()"
+          (pageChange)="page.set($event)"
+          [(pageSize)]="pageSize"
+        />
+      }
+
+      <!-- Totals -->
+      <app-card class="finances__totals" variant="inset" [padded]="false">
+        <div class="finances__totals-body">
+          @if (activeFilters()) {
+            <div class="finances__filtered">
+              <app-tag [labelText]="'common.filters.filtered' | transloco" color="accent" />
+              <span class="finances__filtered-text" [innerHTML]="filteredSummary()"></span>
+            </div>
+          }
+          <app-metric
+            [caption]="'finances.totalSpent' | transloco"
+            [value]="spentLabel()"
+            tone="danger"
+            align="end"
+          />
+          <app-metric
+            [caption]="'finances.totalEarned' | transloco"
+            [value]="earnedLabel()"
+            tone="success"
+            align="end"
+          />
+          <div class="finances__net">
+            <app-metric
+              [caption]="'finances.net' | transloco"
+              [value]="netLabel()"
+              [tone]="net() < 0 ? 'danger' : 'success'"
+              align="end"
+            />
+          </div>
+          <div class="finances__divider"></div>
+          <app-metric
+            [caption]="'finances.balance' | transloco"
+            [value]="balance().label"
+            [tone]="balance().tone"
+            align="end"
+          />
+          <app-tag [labelText]="balance().note" [color]="balance().tag" />
+        </div>
+      </app-card>
+    </div>
+  </app-card>
+
+  <app-entry-form-modal
+    [periodLabel]="periodLabel()"
+    (saved)="onEntrySaved($event)"
+    (deleted)="onEntryDeleted($event)"
+  />
+  <app-budget-modal
+    [periodLabel]="periodLabel()"
+    [spent]="spent()"
+    [previousBudget]="previousBudget()"
+    (saved)="onBudgetSaved($event)"
+  />
+  <app-filter-modal
+    [periodLabel]="periodLabel()"
+    [year]="year()"
+    [month]="month()"
+    (applied)="filters.set($event)"
+  />
+</div>

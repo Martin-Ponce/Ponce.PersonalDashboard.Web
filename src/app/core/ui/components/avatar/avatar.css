@@ -1,0 +1,86 @@
+:host {
+  display: inline-flex;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 800;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- Profile avatar ---------- */
+.avatar--photo {
+  color: var(--color-text-on-accent);
+  text-shadow: 0 1px 2px var(--color-shadow-dark);
+  background-color: var(--color-surface-tint);
+  box-shadow:
+    0 0 0 3px var(--color-white),
+    0 4px 12px var(--color-shadow);
+}
+
+.avatar--md {
+  width: 76px;
+  height: 76px;
+  font-size: 24px;
+}
+
+.avatar--lg {
+  width: 112px;
+  height: 112px;
+  font-size: 36px;
+  box-shadow:
+    0 0 0 4px var(--color-white),
+    0 8px 20px var(--color-shadow);
+}
+
+.avatar--initials {
+  background:
+    radial-gradient(circle at 50% 18%, var(--color-white-soft), var(--color-gloss-fade) 55%),
+    var(--color-accent);
+}
+
+.avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Preset pictures ---------- */
+.avatar--picture-bubbles {
+  background-image: url('../../assets/avatars/bubbles.png');
+}
+
+.avatar--picture-leaf {
+  background-image: url('../../assets/avatars/leaf.png');
+}
+
+.avatar--picture-sun {
+  background-image: url('../../assets/avatars/sun.png');
+}
+
+.avatar--picture-waves {
+  background-image: url('../../assets/avatars/waves.png');
+}
+
+.avatar--picture-mountains {
+  background-image: url('../../assets/avatars/mountains.png');
+}
+
+.avatar--picture-moon {
+  background-image: url('../../assets/avatars/moon.png');
+}
+
+.avatar--picture-flower {
+  background-image: url('../../assets/avatars/flower.png');
+}
+
+.avatar--picture-planet {
+  background-image: url('../../assets/avatars/planet.png');
+}

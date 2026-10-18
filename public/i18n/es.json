@@ -1,0 +1,716 @@
+{
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "es": "Español",
+    "sv": "Svenska"
+  },
+  "theme": {
+    "label": "Tema",
+    "option": "Tema {{name}}",
+    "sky": "Cielo",
+    "night": "Noche"
+  },
+  "common": {
+    "dateFormats": {
+      "long": "EEEE, d 'de' MMMM 'de' y",
+      "monthYear": "MMMM 'de' y"
+    },
+    "relativeDays": {
+      "today": "Hoy",
+      "tomorrow": "Mañana",
+      "yesterday": "Ayer",
+      "days": {
+        "one": "{{count}} día",
+        "other": "{{count}} días"
+      },
+      "weeks": {
+        "one": "{{count}} semana",
+        "other": "{{count}} semanas"
+      },
+      "in": "En {{value}}",
+      "ago": "Hace {{value}}"
+    },
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "noData": "Sin datos",
+    "noOptions": "No hay opciones",
+    "online": "En línea",
+    "offline": "Desconectado",
+    "deleteConfirmation": {
+      "title": "¿Eliminar este registro?",
+      "subtitle": "No se puede deshacer.",
+      "confirm": "Sí, eliminar"
+    },
+    "filters": {
+      "title": "Filtrar y ordenar · {{period}}",
+      "sortBy": "Ordenar por",
+      "order": "Orden",
+      "resetAll": "Restablecer todo",
+      "button": "Filtrar y ordenar",
+      "clear": "Borrar",
+      "filtered": "Filtrado",
+      "sortSummary": "Ordenado por {{field}}, {{order}}",
+      "noMatchText": "Prueba a quitar un filtro o bórralos todos."
+    },
+    "monthPicker": {
+      "previous": "Mes anterior",
+      "next": "Mes siguiente",
+      "year": "Año",
+      "month": "Mes"
+    },
+    "pagination": {
+      "showing": "Mostrando",
+      "of": "de {{total}}",
+      "pages": "Páginas",
+      "previous": "Página anterior",
+      "next": "Página siguiente",
+      "page": "Página {{page}}",
+      "rowsPerPage": "Filas por página"
+    }
+  },
+  "calendar": {
+    "subtitle": "Haz clic en cualquier día para ver, añadir o completar sus eventos",
+    "loadError": "No pudimos cargar tu calendario. Revisa tu conexión e inténtalo de nuevo.",
+    "saveError": "No pudimos guardar los cambios. Inténtalo de nuevo.",
+    "today": "Hoy",
+    "eventCount": {
+      "one": "{{count}} evento",
+      "other": "{{count}} eventos"
+    },
+    "completedWord": {
+      "one": "completado",
+      "other": "completados"
+    },
+    "more": "+{{count}} más",
+    "cell": {
+      "noEvents": "sin eventos",
+      "passed": "ya pasó",
+      "unfinished": "Tiene eventos sin terminar"
+    },
+    "upcoming": {
+      "title": "Próximamente",
+      "from": "Desde hoy",
+      "empty": "No hay nada próximo. Haz clic en un día para añadir un evento."
+    },
+    "legend": {
+      "title": "Leyenda",
+      "today": "Hoy",
+      "events": "Con eventos",
+      "empty": "Sin eventos",
+      "past": "Ya pasó",
+      "missed": "Pasó con eventos sin terminar",
+      "eventsIn": {
+        "one": "evento en {{month}}",
+        "other": "eventos en {{month}}"
+      }
+    },
+    "day": {
+      "pastNote": "Esta fecha ya pasó.",
+      "pastNoteUnfinished": "Esta fecha ya pasó. Aún puedes completar o quitar lo pendiente.",
+      "events": "Eventos",
+      "allDay": "Todo el día",
+      "notCompleted": "Sin completar",
+      "completed": "Completado",
+      "markDone": "Marcar como hecho: {{title}}",
+      "markNotDone": "Marcar como pendiente: {{title}}",
+      "delete": "Eliminar {{title}}",
+      "deleteTitle": "¿Eliminar «{{title}}»? No se puede deshacer.",
+      "keep": "Conservarlo",
+      "empty": "Aún no hay nada planeado para este día.",
+      "addTitle": "Añadir un evento",
+      "title": "Título",
+      "titlePlaceholder": "p. ej., Pagar el teléfono",
+      "time": "Hora",
+      "note": "Nota",
+      "notePlaceholder": "p. ej., Llevar los documentos",
+      "optional": "(opcional)",
+      "add": "Añadir",
+      "titleRequired": "Ponle un título al evento.",
+      "done": "Listo"
+    }
+  },
+  "goals": {
+    "subtitle": "Marca tus metas diarias y se sumarán a tus metas semanales",
+    "thisWeek": "Esta semana",
+    "edit": "Editar {{title}}",
+    "resetIn": {
+      "one": "Las metas semanales se reinician mañana",
+      "other": "Las metas semanales se reinician en {{count}} días"
+    },
+    "loadError": "No pudimos cargar tus metas. Revisa tu conexión e inténtalo de nuevo.",
+    "saveError": "No pudimos guardar los cambios. Inténtalo de nuevo.",
+    "units": {
+      "Minutes": {
+        "one": "{{count}} minuto",
+        "other": "{{count}} minutos"
+      },
+      "Hours": {
+        "one": "{{count}} hora",
+        "other": "{{count}} horas"
+      },
+      "Times": {
+        "one": "{{count}} vez",
+        "other": "{{count}} veces"
+      }
+    },
+    "unitNames": {
+      "Minutes": "minutos",
+      "Hours": "horas",
+      "Times": "veces"
+    },
+    "schedule": {
+      "everyDay": "Todos los días",
+      "weekdays": "Entre semana",
+      "weekends": "Fines de semana",
+      "none": "Sin días fijos"
+    },
+    "daily": {
+      "title": "Metas diarias",
+      "hint": "Se repiten cada día · se reinician a medianoche",
+      "dayTabs": "Día de la semana",
+      "add": "Añadir meta diaria",
+      "todayHeading": "Hoy · {{day}}",
+      "today": "Hoy",
+      "future": "Aún no disponible",
+      "past": "{{day}} (todavía puedes registrarla)",
+      "progress": "{{done}} de {{planned}} previstas hechas",
+      "bonus": "{{count}} extra",
+      "missedWeek": {
+        "one": "{{count}} olvidada esta semana",
+        "other": "{{count}} olvidadas esta semana"
+      },
+      "legend": {
+        "done": "Hecha",
+        "planned": "Prevista",
+        "missed": "Olvidada",
+        "off": "No prevista (sigue siendo opcional)"
+      },
+      "tags": {
+        "missed": "Olvidada",
+        "bonus": "Extra",
+        "notCreated": "Aún no existía",
+        "optionalToday": "Opcional hoy",
+        "optionalOn": "Opcional el {{day}}",
+        "plannedToday": "Prevista hoy",
+        "plannedOn": "Prevista el {{day}}"
+      },
+      "addsTo": "Suma a {{goals}}",
+      "complete": "Completar {{title}} el {{day}}",
+      "undo": "Deshacer {{title}} el {{day}}",
+      "weekLabel": "{{title}}: prevista {{schedule}}. Hecha el {{days}}.",
+      "noDays": "ningún día todavía",
+      "dots": {
+        "done": "{{day}}: hecha",
+        "bonus": "{{day}}: hecha (extra)",
+        "missed": "{{day}}: olvidada",
+        "planned": "{{day}}: prevista",
+        "off": "{{day}}: no prevista"
+      },
+      "empty": "Aún no hay metas diarias. Añade una para empezar a crear un hábito."
+    },
+    "weekly": {
+      "title": "Metas semanales",
+      "hint": "Se llenan con tus metas diarias · se reinician el lunes",
+      "locked": "Las metas semanales no se marcan a mano. Cada día que completas su meta diaria cuenta aquí.",
+      "add": "Añadir meta semanal",
+      "progressCaption": "Progreso de la semana",
+      "progress": "{{done}} de {{count}} metas completadas",
+      "of": "{{value}} de {{target}}",
+      "from": "De la diaria: {{title}} ({{amount}} cada vez)",
+      "complete": "¡Hecha esta semana!",
+      "toGo": {
+        "one": "Falta {{amount}}",
+        "other": "Faltan {{amount}}"
+      },
+      "badgeComplete": "Completada",
+      "badgeLocked": "Bloqueada: se actualiza con una meta diaria",
+      "empty": "Aún no hay metas semanales. Añade una para fijar cuántos días a la semana hacer una meta diaria."
+    },
+    "form": {
+      "newDaily": "Nueva meta diaria",
+      "newWeekly": "Nueva meta semanal",
+      "editDaily": "Editar meta diaria",
+      "editWeekly": "Editar meta semanal",
+      "goal": "Meta",
+      "dailyPlaceholder": "p. ej., Ir al gimnasio",
+      "weeklyPlaceholder": "Opcional · usa el nombre de la meta diaria",
+      "plannedDays": "Días previstos",
+      "plannedHint": "Puedes marcar la meta también otros días. Los días previstos solo son un recordatorio, y si se te olvida uno se marca.",
+      "source": "Meta diaria",
+      "sourcePlaceholder": "Elige una meta diaria",
+      "sourceOption": "{{title}} ({{amount}} al día)",
+      "dailyAmount": "Cantidad cada día",
+      "weeklyTarget": "Días por semana",
+      "weeklyTargetHint": "Cuántos días a la semana hay que completar la meta diaria. Si eliminas la meta diaria, esta también se elimina.",
+      "unit": "Unidad",
+      "nameRequired": "Ponle un nombre a la meta.",
+      "amountRequired": "Introduce una cantidad mayor que cero.",
+      "targetRequired": "Introduce un número entero de días del 1 al {{max}}.",
+      "sourceRequired": "Elige la meta diaria a la que pertenece. Cada meta diaria puede tener una meta semanal.",
+      "daysRequired": "Elige al menos un día previsto.",
+      "deleteGoal": "Eliminar meta",
+      "saveChanges": "Guardar cambios",
+      "saveGoal": "Guardar meta",
+      "deleteTitle": "¿Eliminar «{{title}}»?",
+      "deleteWeekly": "Se perderá su progreso de esta semana; la meta diaria se conserva. No se puede deshacer.",
+      "deleteDaily": "Se borrará su historial. No se puede deshacer.",
+      "deleteDailyLinked": "Se borrarán su historial y su meta semanal. No se puede deshacer.",
+      "keep": "Conservarla"
+    }
+  },
+  "jobApplications": {
+    "status": {
+      "Applied": "Enviada",
+      "Interview": "Entrevista",
+      "Offer": "Oferta",
+      "Rejected": "Rechazada"
+    },
+    "subtitle": "Todas las solicitudes que has enviado, mes a mes",
+    "add": "Añadir solicitud",
+    "listTitle": "Solicitudes · {{period}}",
+    "count": {
+      "one": "{{count}} solicitud",
+      "other": "{{count}} solicitudes"
+    },
+    "countFiltered": {
+      "one": "{{shown}} de {{count}} solicitud",
+      "other": "{{shown}} de {{count}} solicitudes"
+    },
+    "pipeline": "Proceso",
+    "workModes": {
+      "OnSite": "Presencial",
+      "Hybrid": "Híbrido",
+      "Remote": "Remoto"
+    },
+    "columns": {
+      "company": "Empresa",
+      "role": "Puesto",
+      "status": "Estado",
+      "location": "Ubicación",
+      "appliedOn": "Fecha de solicitud",
+      "salary": "Salario",
+      "updatedAt": "Última modificación",
+      "actions": "Acciones"
+    },
+    "editLabel": "Editar la solicitud de {{company}}",
+    "emptyTitle": "No hay solicitudes en {{period}}",
+    "emptyText": "Usa Añadir solicitud para registrar la primera del mes.",
+    "loadError": "No pudimos cargar las solicitudes de este mes. Revisa tu conexión e inténtalo de nuevo.",
+    "saveError": "No pudimos guardar los cambios. Inténtalo de nuevo.",
+    "noMatchTitle": "Ninguna solicitud coincide con los filtros",
+    "filteredSummary": "Mostrando {{shown}} de {{count}} solicitudes · los totales son de todo el mes",
+    "totals": {
+      "sent": "Solicitudes enviadas",
+      "active": "Siguen activas",
+      "responseRate": "Tasa de respuesta"
+    },
+    "form": {
+      "newTitle": "Nueva solicitud",
+      "editTitle": "Editar solicitud",
+      "company": "Empresa",
+      "companyPlaceholder": "p. ej., Northwind Labs",
+      "role": "Puesto",
+      "rolePlaceholder": "p. ej., Diseñador de producto",
+      "location": "Ubicación",
+      "locationPlaceholder": "p. ej., Madrid",
+      "salary": "Salario (opcional)",
+      "salaryPlaceholder": "p. ej., 45000",
+      "workMode": "Modalidad",
+      "status": "Estado",
+      "companyRequired": "Introduce el nombre de la empresa.",
+      "roleRequired": "Introduce el puesto de la solicitud.",
+      "salaryInvalid": "Deja el salario vacío o introduce un importe mayor que cero.",
+      "deleteApplication": "Eliminar solicitud",
+      "saveChanges": "Guardar cambios",
+      "saveApplication": "Guardar solicitud",
+      "deleteTitle": "¿Eliminar la solicitud de {{company}}?",
+      "deleteText": "Se quitará de {{period}} y los totales se actualizarán. No se puede deshacer.",
+      "keep": "Conservarla"
+    },
+    "filters": {
+      "search": "La empresa o el puesto contiene",
+      "searchPlaceholder": "p. ej., diseñador",
+      "status": "Estado",
+      "workMode": "Modalidad",
+      "city": "Ciudad",
+      "show": {
+        "one": "Mostrar {{count}} solicitud",
+        "other": "Mostrar {{count}} solicitudes"
+      },
+      "fields": {
+        "appliedOn": "Fecha de solicitud",
+        "updatedAt": "Última modificación",
+        "company": "Empresa",
+        "role": "Puesto",
+        "status": "Estado"
+      },
+      "orders": {
+        "appliedOn": {
+          "asc": "Más antiguas primero",
+          "desc": "Más recientes primero"
+        },
+        "updatedAt": {
+          "asc": "Más antiguas primero",
+          "desc": "Más recientes primero"
+        },
+        "company": {
+          "asc": "De la A a la Z",
+          "desc": "De la Z a la A"
+        },
+        "role": {
+          "asc": "De la A a la Z",
+          "desc": "De la Z a la A"
+        },
+        "status": {
+          "asc": "De enviada a rechazada",
+          "desc": "De rechazada a enviada"
+        }
+      }
+    }
+  },
+  "spending": {
+    "categories": {
+      "Housing": "Vivienda",
+      "Groceries": "Supermercado",
+      "EatingOut": "Comer fuera",
+      "Transport": "Transporte",
+      "Subscriptions": "Suscripciones",
+      "Shopping": "Compras",
+      "Gifts": "Regalos",
+      "Travel": "Viajes",
+      "Electronics": "Electrónica",
+      "Freelance": "Trabajos freelance",
+      "Sales": "Ventas",
+      "Refunds": "Reembolsos",
+      "GiftsReceived": "Regalos recibidos"
+    },
+    "types": {
+      "Expense": "Gasto",
+      "Income": "Ingreso"
+    }
+  },
+  "overview": {
+    "greetings": {
+      "welcomeBack": "¡Bienvenido de nuevo, {{name}}!",
+      "yo": "¡Ey, {{name}}!",
+      "whatsUp": "¿Qué rollo, {{name}}?",
+      "heyThere": "¡Hola, hola, {{name}}!",
+      "goodToSeeYou": "Qué bueno verte, {{name}}",
+      "lookWhosBack": "¡Mira quién volvió, {{name}}!",
+      "howdy": "¿Qué tal, {{name}}?",
+      "readyToRoll": "¿A darle, {{name}}",
+      "helloAgain": "Hola de nuevo, {{name}}",
+      "niceToHaveYouBack": "¡Qué bueno tenerte de vuelta, {{name}}!"
+    },
+    "loadError": "No pudimos cargar tu resumen. Revisa tu conexión e inténtalo de nuevo.",
+    "customize": "Personalizar",
+    "nothingShown": "Aquí no hay nada todavía. Abre {{customize}} para elegir qué mostrar.",
+    "summary": {
+      "label": "Resumen",
+      "balance": "Saldo de la cuenta",
+      "balanceChange": "{{amount}} este mes",
+      "spent": "Gastado este mes",
+      "noBudget": "Sin presupuesto",
+      "leftInBudget": "Quedan {{amount}} del presupuesto",
+      "overBudget": "{{amount}} por encima del presupuesto",
+      "nextDate": "Próxima fecha importante",
+      "nothingComingUp": "Nada próximo",
+      "activeApplications": "Solicitudes activas",
+      "newThisWeek": {
+        "one": "{{count}} nueva esta semana",
+        "other": "{{count}} nuevas esta semana"
+      },
+      "interviews": "Entrevistas programadas",
+      "nextInterview": "Próxima: {{date}}",
+      "noInterviews": "Ninguna programada"
+    },
+    "spending": {
+      "title": "Gasto mensual · últimos {{months}} meses",
+      "viewAll": "Ver todo",
+      "chartLabel": "Total gastado por mes",
+      "budget": "Presupuesto de {{month}}",
+      "notSet": "Sin definir",
+      "budgetUsed": "Presupuesto usado este mes",
+      "nothingSpent": "Aún no hay gastos",
+      "category": "Categoría",
+      "amount": "Importe"
+    },
+    "dates": {
+      "title": "Próximas fechas",
+      "add": "+ Añadir",
+      "addLabel": "Añadir una fecha",
+      "soon": "¡PRONTO!",
+      "empty": "No hay fechas próximas."
+    },
+    "applications": {
+      "title": "Solicitudes de empleo",
+      "empty": "Aún no hay solicitudes",
+      "counts": {
+        "Applied": {
+          "one": "{{count}} enviada",
+          "other": "{{count}} enviadas"
+        },
+        "Interview": {
+          "one": "{{count}} entrevista",
+          "other": "{{count}} entrevistas"
+        },
+        "Offer": {
+          "one": "{{count}} oferta",
+          "other": "{{count}} ofertas"
+        },
+        "Rejected": {
+          "one": "{{count}} rechazada",
+          "other": "{{count}} rechazadas"
+        }
+      },
+      "columns": {
+        "company": "Empresa",
+        "role": "Puesto",
+        "status": "Estado",
+        "location": "Ubicación",
+        "appliedOn": "Fecha de solicitud",
+        "updatedAt": "Última modificación"
+      }
+    },
+    "customizeWindow": {
+      "title": "Personalizar resumen",
+      "close": "Cerrar personalización",
+      "show": "Mostrar en el resumen",
+      "reset": "Restablecer",
+      "done": "Listo",
+      "widgets": {
+        "summary": "Resumen rápido",
+        "spending": "Gasto mensual",
+        "dates": "Próximas fechas",
+        "applications": "Solicitudes de empleo"
+      }
+    }
+  },
+  "login": {
+    "pageTitle": "Iniciar sesión",
+    "title": "Te damos la bienvenida",
+    "button": "Iniciar sesión con el proveedor de identidad",
+    "redirecting": "Te llevamos a iniciar sesión…",
+    "secureNote": "Iniciarás sesión en una página segura y volverás aquí enseguida.",
+    "unreachable": "No pudimos abrir la página de inicio de sesión. Revisa tu conexión e inténtalo de nuevo.",
+    "sessionExpired": "Tu sesión terminó. Vuelve a iniciar sesión para continuar.",
+    "tryAgain": "Intentar de nuevo",
+    "callback": {
+      "pageTitle": "Iniciando sesión",
+      "signingIn": "Iniciando sesión…",
+      "failed": "No se pudo completar el inicio de sesión."
+    }
+  },
+  "nav": {
+    "sections": "Secciones",
+    "overview": "Resumen",
+    "finances": "Finanzas",
+    "calendar": "Calendario",
+    "jobApplications": "Solicitudes de empleo",
+    "settings": "Ajustes",
+    "goals": "Metas"
+  },
+  "shell": {
+    "version": "Versión",
+    "signOut": "Cerrar sesión"
+  },
+  "underConstruction": {
+    "badge": "EN CONSTRUCCIÓN",
+    "text": "La sección de {{page}} estará disponible pronto.",
+    "back": "Volver al resumen"
+  },
+  "finances": {
+    "subtitle": "Todos los gastos e ingresos que has registrado, mes a mes",
+    "accountBalance": "Saldo de la cuenta",
+    "addEntry": "Añadir movimiento",
+    "entriesTitle": "Movimientos · {{period}}",
+    "count": {
+      "one": "{{count}} movimiento",
+      "other": "{{count}} movimientos"
+    },
+    "budgetFor": "Presupuesto de {{period}}",
+    "notSet": "Sin definir",
+    "used": "Usado",
+    "budgetUsed": "Presupuesto usado",
+    "setBudget": "Definir presupuesto",
+    "editBudget": "Editar presupuesto",
+    "emptyTitle": "No hay movimientos en {{period}}",
+    "emptyText": "Usa Añadir movimiento para registrar tu primer movimiento del mes.",
+    "columns": {
+      "name": "Nombre",
+      "type": "Tipo",
+      "category": "Categoría",
+      "amount": "Importe",
+      "createdAt": "Fecha de creación",
+      "actions": "Acciones",
+      "updatedAt": "Última modificación"
+    },
+    "editEntryLabel": "Editar {{name}}",
+    "totalSpent": "Total gastado",
+    "balance": "Saldo del presupuesto",
+    "noBudget": "Sin presupuesto",
+    "overBudget": "Presupuesto superado",
+    "withinBudget": "Dentro del presupuesto",
+    "entryForm": {
+      "newTitle": "Nuevo movimiento",
+      "editTitle": "Editar movimiento",
+      "registeringIn": "Se registrará en",
+      "entryFrom": "Movimiento de",
+      "name": "Nombre",
+      "namePlaceholder": "p. ej., Compra semanal",
+      "amount": "Importe",
+      "type": "Tipo",
+      "category": "Categoría",
+      "nameRequired": "Ponle un nombre al movimiento.",
+      "amountRequired": "Introduce un importe mayor que cero.",
+      "deleteTitle": "¿Eliminar «{{name}}»?",
+      "deleteText": "Se quitará de {{period}} y los totales se actualizarán. No se puede deshacer.",
+      "keepEntry": "Conservar movimiento",
+      "deleteEntry": "Eliminar movimiento",
+      "saveChanges": "Guardar cambios",
+      "saveEntry": "Guardar movimiento"
+    },
+    "budgetForm": {
+      "setTitle": "Definir presupuesto · {{period}}",
+      "editTitle": "Editar presupuesto · {{period}}",
+      "required": "Introduce un presupuesto mayor que cero.",
+      "save": "Guardar presupuesto",
+      "caption": "Presupuesto de",
+      "firstTime": "Este mes aún no tiene presupuesto. Define uno para empezar a añadir movimientos.",
+      "amountLabel": "Presupuesto mensual",
+      "sameAsLast": "Igual que el mes pasado ({{amount}})",
+      "spentPlus10": "Gastado hasta ahora + 10 % ({{amount}})",
+      "alreadySpent": "Ya has gastado {{amount}} este mes",
+      "nothingSpent": "Aún no has gastado nada este mes",
+      "used": "{{percent}} % usado",
+      "set": "Definir presupuesto"
+    },
+    "setBudgetToStart": "Define el presupuesto para empezar",
+    "loadError": "No pudimos cargar los movimientos de este mes. Revisa tu conexión e inténtalo de nuevo.",
+    "saveError": "No pudimos guardar los cambios. Inténtalo de nuevo.",
+    "countFiltered": {
+      "one": "{{shown}} de {{count}} movimiento",
+      "other": "{{shown}} de {{count}} movimientos"
+    },
+    "noBudgetTitle": "Aún no hay presupuesto para {{period}}",
+    "noBudgetText": "Cada mes tiene su propio presupuesto. Define uno para empezar a añadir movimientos.",
+    "setBudgetFor": "Definir presupuesto de {{period}}",
+    "noMatchTitle": "Ningún movimiento coincide con los filtros",
+    "totalEarned": "Total ingresado",
+    "net": "Neto del mes",
+    "filteredSummary": "Mostrando {{shown}} de {{count}} movimientos · neto de {{net}} en los mostrados",
+    "filters": {
+      "nameContains": "El nombre contiene",
+      "namePlaceholder": "p. ej., supermercado",
+      "type": "Tipo",
+      "category": "Categoría",
+      "amount": "Importe",
+      "min": "Mín.",
+      "max": "Máx.",
+      "minLabel": "Importe mínimo",
+      "maxLabel": "Importe máximo",
+      "to": "a",
+      "show": {
+        "one": "Mostrar {{count}} movimiento",
+        "other": "Mostrar {{count}} movimientos"
+      },
+      "fields": {
+        "createdAt": "Fecha de creación",
+        "updatedAt": "Última modificación",
+        "name": "Nombre",
+        "amount": "Importe",
+        "category": "Categoría"
+      },
+      "orders": {
+        "createdAt": {
+          "asc": "Más antiguos primero",
+          "desc": "Más recientes primero"
+        },
+        "updatedAt": {
+          "asc": "Más antiguos primero",
+          "desc": "Más recientes primero"
+        },
+        "name": {
+          "asc": "De la A a la Z",
+          "desc": "De la Z a la A"
+        },
+        "amount": {
+          "asc": "Menor primero",
+          "desc": "Mayor primero"
+        },
+        "category": {
+          "asc": "Gastos primero",
+          "desc": "Ingresos primero"
+        }
+      }
+    }
+  },
+  "settings": {
+    "subtitle": "Haz que {{app}} se vea y funcione a tu gusto",
+    "status": {
+      "unsaved": "Cambios sin guardar",
+      "saved": "Cambios guardados",
+      "allSaved": "Todo guardado",
+      "saveError": "No se pudo guardar · inténtalo de nuevo"
+    },
+    "discard": "Descartar",
+    "save": "Guardar cambios",
+    "preview": "Vista previa",
+    "theme": {
+      "title": "Tema",
+      "description": "Fondo y color de acento"
+    },
+    "picture": {
+      "title": "Perfil",
+      "description": "Se muestra en la barra lateral",
+      "displayName": "Nombre visible",
+      "displayNameHint": "Se muestra en la barra lateral y en el resumen. Déjalo vacío para usar tu usuario ({{userName}}).",
+      "options": {
+        "initials": "Iniciales",
+        "bubbles": "Burbujas",
+        "leaf": "Hoja",
+        "sun": "Sol",
+        "waves": "Olas",
+        "mountains": "Picos",
+        "moon": "Luna",
+        "flower": "Flor",
+        "planet": "Planeta"
+      },
+      "upload": "Subir",
+      "uploadSoon": "Pronto podrás subir tu propia foto",
+      "soon": "PRONTO"
+    },
+    "language": {
+      "title": "Idioma",
+      "description": "Textos y formato de fechas",
+      "displayLanguage": "Idioma de la interfaz",
+      "dateFormat": "Formato de fecha"
+    },
+    "currency": {
+      "title": "Moneda",
+      "description": "Se usa en finanzas y presupuestos",
+      "main": "Moneda principal",
+      "showDecimals": "Mostrar decimales",
+      "showDecimalsHint": "Muestra los céntimos en los importes"
+    },
+    "timeZone": {
+      "title": "Zona horaria",
+      "description": "Las fechas límite y los recordatorios la siguen",
+      "auto": "Ajustar automáticamente",
+      "autoHint": "Usa la zona horaria de este dispositivo",
+      "label": "Zona horaria",
+      "localTime": "Hora local actual",
+      "zones": {
+        "madrid": "Madrid",
+        "london": "Londres",
+        "newYork": "Nueva York",
+        "mexicoCity": "Ciudad de México",
+        "losAngeles": "Los Ángeles",
+        "tokyo": "Tokio",
+        "utc": "UTC"
+      }
+    }
+  }
+}

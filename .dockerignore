@@ -1,0 +1,63 @@
+# Node modules (installed in the image with npm ci)
+node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output and caches
+dist
+build
+tmp
+temp
+.angular
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDE, editor and tool folders
+.vscode
+.idea
+.history
+.claude
+
+# Git
+.git
+
+# Coverage and test output
+coverage
+*.lcov
+
+# Dev-only scripts (IdP client registration)
+scripts
+
+# Secrets and certificates: never in an image (runtime config comes from env.sh / environment variables)
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+certs
+
+# Docker and repo files the build doesn't need (Dockerfile is read by Docker either way)
+Dockerfile
+.dockerignore
+.github
+README.md
+
+# Misc
+*.tgz
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig

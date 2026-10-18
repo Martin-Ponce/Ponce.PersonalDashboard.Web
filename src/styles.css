@@ -1,0 +1,17 @@
+@import './app/core/ui/colors.css';
+@import './app/core/ui/typography.css';
+
+body {
+  margin: 0;
+  background: var(--color-backdrop);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}

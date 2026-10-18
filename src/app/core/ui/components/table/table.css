@@ -1,0 +1,162 @@
+:host {
+  display: block;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.table__head {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.table__head--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-surface-tint);
+}
+
+.table__th {
+  padding: 8px 10px;
+  font-weight: 700;
+}
+
+.table__td {
+  padding: 9px 10px;
+}
+
+.table__row:nth-child(even) {
+  background: var(--color-row-stripe);
+}
+
+.table--divided .table__row {
+  border-top: 1px solid var(--color-row-divider);
+}
+
+.table__cell--right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table__cell--strong {
+  font-weight: 700;
+}
+
+.table__cell--muted {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* Per-row tones, keep these after strong/muted so they win */
+.table__cell--tone-strong {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.table__cell--tone-muted {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.table__cell--tone-success,
+.table__cell--tone-danger {
+  font-weight: 800;
+}
+
+.table__cell--tone-success {
+  color: var(--color-success-text);
+}
+
+.table__cell--tone-danger {
+  color: var(--color-danger-text);
+}
+
+.table__cell--actions {
+  width: 56px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: right;
+}
+
+.table__actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.table__dot-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table__initial-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table__initial {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-image: var(--gradient-gloss);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}
+
+.table__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px var(--color-white-soft);
+}
+
+.table__empty {
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.table__empty-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.table__empty-text {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.table__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.table__empty-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.table__empty-actions:empty {
+  display: none;
+}

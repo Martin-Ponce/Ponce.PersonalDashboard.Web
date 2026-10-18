@@ -1,0 +1,36 @@
+<div class="goals">
+  <app-page-header [header]="'nav.goals' | transloco" [subtitle]="'goals.subtitle' | transloco">
+    <div class="goals__week">
+      <div class="goals__week-text">
+        <span class="goals__caption">{{ 'goals.thisWeek' | transloco }}</span>
+        <span class="goals__week-range">{{ weekRange() }}</span>
+      </div>
+      <app-tag color="warning" [labelText]="resetLabel()" />
+    </div>
+  </app-page-header>
+
+  @if (errorMessage()) {
+    <app-banner [text]="errorMessage()" />
+  }
+
+  <div class="goals__columns">
+    <app-daily-goals
+      [goals]="dailies()"
+      [weekStart]="weekStart"
+      [today]="today"
+      [(selectedDay)]="selectedDay"
+      (added)="openNewDaily()"
+      (edited)="editDaily($event)"
+      (toggled)="onToggled($event)"
+    />
+    <app-weekly-goals [goals]="dailies()" (added)="openNewWeekly()" (edited)="editWeekly($event)" />
+  </div>
+
+  <app-goal-form-modal
+    [dailies]="dailies()"
+    (dailySaved)="onDailySaved($event)"
+    (weeklySaved)="onWeeklySaved($event)"
+    (dailyDeleted)="onDailyDeleted($event)"
+    (weeklyDeleted)="onWeeklyDeleted($event)"
+  />
+</div>

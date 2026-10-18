@@ -1,0 +1,114 @@
+<app-modal
+  [titleText]="'common.filters.title' | transloco: { period: periodLabel() }"
+  [width]="620"
+  (closed)="isOpen.set(false)"
+>
+  <div class="filters">
+    <!-- Sorting -->
+    <section class="filters__section">
+      <span id="filters-sort" class="filters__caption">
+        {{ 'common.filters.sortBy' | transloco }}
+      </span>
+      <app-segmented-control
+        labelledBy="filters-sort"
+        [options]="sortOptions()"
+        [value]="draft().sort"
+        (valueChange)="update({ sort: $event })"
+      />
+      <app-segmented-control
+        [options]="directionOptions()"
+        [value]="draft().direction"
+        [ariaLabel]="'common.filters.order' | transloco"
+        (valueChange)="update({ direction: $event })"
+      />
+    </section>
+
+    <div class="filters__divider"></div>
+
+    <!-- Name -->
+    <section class="filters__section">
+      <label class="filters__caption" for="filters-name">
+        {{ 'finances.filters.nameContains' | transloco }}
+      </label>
+      <app-entry
+        inputId="filters-name"
+        [placeholder]="'finances.filters.namePlaceholder' | transloco"
+        [ngModel]="draft().nameContains"
+        (ngModelChange)="update({ nameContains: $event })"
+      />
+    </section>
+
+    <!-- Type -->
+    <section class="filters__section">
+      <span class="filters__caption">{{ 'finances.filters.type' | transloco }}</span>
+      <div class="filters__chips">
+        @for (type of types; track type.value) {
+          <app-chip
+            [label]="'spending.types.' + type.value | transloco"
+            [selected]="draft().types.includes(type.value)"
+            (clicked)="toggleType(type.value)"
+          />
+        }
+      </div>
+    </section>
+
+    <!-- Category -->
+    <section class="filters__section">
+      <span class="filters__caption">{{ 'finances.filters.category' | transloco }}</span>
+      <div class="filters__chips">
+        @for (category of categories; track category.value) {
+          <app-chip
+            [label]="'spending.categories.' + category.value | transloco"
+            [dotColor]="category.color"
+            [selected]="draft().categories.includes(category.value)"
+            (clicked)="toggleCategory(category.value)"
+          />
+        }
+      </div>
+    </section>
+
+    <!-- Amount -->
+    <section class="filters__section">
+      <span class="filters__caption">{{ 'finances.filters.amount' | transloco }}</span>
+      <div class="filters__range">
+        <app-entry
+          type="number"
+          [min]="0"
+          [prefix]="currencySymbol()"
+          [placeholder]="'finances.filters.min' | transloco"
+          [ariaLabel]="'finances.filters.minLabel' | transloco"
+          [ngModel]="draft().minAmount ?? ''"
+          (ngModelChange)="setAmountLimit('minAmount', $event)"
+        />
+        <span class="filters__range-to">{{ 'finances.filters.to' | transloco }}</span>
+        <app-entry
+          type="number"
+          [min]="0"
+          [prefix]="currencySymbol()"
+          [placeholder]="'finances.filters.max' | transloco"
+          [ariaLabel]="'finances.filters.maxLabel' | transloco"
+          [ngModel]="draft().maxAmount ?? ''"
+          (ngModelChange)="setAmountLimit('maxAmount', $event)"
+        />
+      </div>
+    </section>
+
+    <div class="filters__footer">
+      <app-button
+        variant="link"
+        [text]="'common.filters.resetAll' | transloco"
+        (clicked)="resetAll()"
+      />
+      <div class="filters__footer-actions">
+        <app-button variant="secondary" [text]="'common.cancel' | transloco" (clicked)="close()" />
+        <app-button
+          [text]="
+            'finances.filters.show.' + (matchCount() === 1 ? 'one' : 'other')
+              | transloco: { count: matchCount() }
+          "
+          (clicked)="apply()"
+        />
+      </div>
+    </div>
+  </div>
+</app-modal>

@@ -1,0 +1,102 @@
+<app-modal
+  [titleText]="
+    (editing() ? 'finances.entryForm.editTitle' : 'finances.entryForm.newTitle') | transloco
+  "
+  (closed)="confirmingDelete.set(false)"
+>
+  <app-card variant="inset" [padded]="false">
+    <div class="entry-form__period">
+      <div class="entry-form__period-main">
+        <app-icon name="calendar" [size]="20" />
+        <div>
+          <div class="entry-form__caption">
+            {{
+              (editing() ? 'finances.entryForm.entryFrom' : 'finances.entryForm.registeringIn')
+                | transloco
+            }}
+          </div>
+          <div class="entry-form__period-label">{{ periodLabel() }}</div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+
+  <form class="entry-form" [formGroup]="form" (ngSubmit)="save()">
+    <app-form-field [label]="'finances.entryForm.name' | transloco" labelFor="entry-name">
+      <app-entry
+        #nameEntry
+        inputId="entry-name"
+        [placeholder]="'finances.entryForm.namePlaceholder' | transloco"
+        formControlName="name"
+        [showValidation]="tried()"
+      />
+    </app-form-field>
+
+    <app-form-field [label]="'finances.entryForm.amount' | transloco" labelFor="entry-amount">
+      <app-entry
+        inputId="entry-amount"
+        type="number"
+        placeholder="0.00"
+        [prefix]="currencySymbol()"
+        [min]="0"
+        [step]="0.01"
+        formControlName="amount"
+        [showValidation]="tried()"
+      />
+    </app-form-field>
+
+    <div class="entry-form__row">
+      <app-form-field [label]="'finances.entryForm.type' | transloco" labelFor="entry-type">
+        <app-select selectId="entry-type" [items]="typeOptions()" formControlName="type" />
+      </app-form-field>
+      <app-form-field [label]="'finances.entryForm.category' | transloco" labelFor="entry-category">
+        <app-select
+          selectId="entry-category"
+          [items]="categoryOptions()"
+          formControlName="category"
+        />
+      </app-form-field>
+    </div>
+
+    @if (formError(); as error) {
+      <app-banner [text]="error" />
+    }
+
+    @if (confirmingDelete()) {
+      <app-delete-confirmation
+        [title]="'finances.entryForm.deleteTitle' | transloco: { name: editing()?.description }"
+        [subtitle]="'finances.entryForm.deleteText' | transloco: { period: periodLabel() }"
+        [cancelText]="'finances.entryForm.keepEntry' | transloco"
+        (cancelled)="confirmingDelete.set(false)"
+        (confirmed)="confirmDelete()"
+      />
+    } @else {
+      <div class="entry-form__footer">
+        <div>
+          @if (editing()) {
+            <app-button
+              variant="danger-outline"
+              iconName="trash"
+              [text]="'finances.entryForm.deleteEntry' | transloco"
+              (clicked)="confirmingDelete.set(true)"
+            />
+          }
+        </div>
+        <div class="entry-form__footer-actions">
+          <app-button
+            variant="secondary"
+            [text]="'common.cancel' | transloco"
+            (clicked)="close()"
+          />
+          <app-button
+            type="submit"
+            [text]="
+              (editing() ? 'finances.entryForm.saveChanges' : 'finances.entryForm.saveEntry')
+                | transloco
+            "
+          />
+        </div>
+      </div>
+    }
+  </form>
+</app-modal>

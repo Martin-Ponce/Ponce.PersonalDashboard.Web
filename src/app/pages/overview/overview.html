@@ -1,0 +1,217 @@
+<div class="overview">
+  <app-page-header [header]="greeting()" [subtitle]="todayLabel()">
+    <app-button
+      [text]="'overview.customize' | transloco"
+      iconName="sliders"
+      [expanded]="customizeOpen()"
+      (clicked)="toggleCustomize()"
+    />
+  </app-page-header>
+
+  @if (errorMessage()) {
+    <app-banner [text]="errorMessage()" />
+  }
+
+  @if (customizeOpen()) {
+    <app-customize-overview class="overview__customize" (closed)="customizeOpen.set(false)" />
+  }
+
+  <!-- At a glance -->
+  @if (widgets().summary) {
+    <section class="overview__summary" [attr.aria-label]="'overview.summary.label' | transloco">
+      <app-stat
+        [category]="'overview.summary.balance' | transloco"
+        [value]="balanceLabel()"
+        [valueTone]="(balance()?.totalBalance ?? 0) < 0 ? 'danger' : 'default'"
+        [subtitle]="balanceChange().text"
+        [subtitleTone]="balanceChange().tone"
+      />
+
+      <app-stat
+        [category]="'overview.summary.spent' | transloco"
+        [value]="spentThisMonth()"
+        valueTone="danger"
+        [subtitle]="budgetBalance().text"
+        [subtitleTone]="budgetBalance().tone"
+      />
+
+      @if (nextDate(); as next) {
+        <app-stat
+          [category]="'overview.summary.nextDate' | transloco"
+          [value]="next.date | daysUntil: 'phrase'"
+          [subtitle]="next.title + ', ' + (next.date | date: 'EEE d MMM' : undefined : locale())"
+        />
+      } @else {
+        <app-stat
+          [category]="'overview.summary.nextDate' | transloco"
+          value="—"
+          [subtitle]="'overview.summary.nothingComingUp' | transloco"
+        />
+      }
+
+      <app-stat
+        [category]="'overview.summary.activeApplications' | transloco"
+        [value]="activeApplications()"
+        [subtitle]="newThisWeekLabel()"
+      />
+
+      <app-stat
+        [category]="'overview.summary.interviews' | transloco"
+        variant="accent"
+        [value]="upcomingInterviews().length"
+        [subtitle]="
+          upcomingInterviews().length
+            ? ('overview.summary.nextInterview'
+              | transloco
+                : {
+                    date: upcomingInterviews()[0] | date: 'EEE d MMM, HH:mm' : undefined : locale(),
+                  })
+            : ('overview.summary.noInterviews' | transloco)
+        "
+      />
+    </section>
+  }
+
+  @if (widgets().spending || widgets().dates) {
+    <div class="overview__widgets">
+      <!-- Monthly spending -->
+      @if (widgets().spending) {
+        <app-card
+          class="overview__spending"
+          [class.overview__full-row]="!widgets().dates"
+          [titleText]="'overview.spending.title' | transloco: { months: chartMonths }"
+        >
+          <a card-actions routerLink="/finances">{{ 'overview.spending.viewAll' | transloco }}</a>
+
+          <div class="overview__spending-body">
+            <app-bar-chart
+              [items]="chartItems()"
+              [label]="'overview.spending.chartLabel' | transloco"
+            />
+
+            <div class="overview__budget">
+              <div class="overview__budget-label">
+                <span>{{
+                  'overview.spending.budget' | transloco: { month: budgetMonthLabel() }
+                }}</span>
+                <b>
+                  {{
+                    budgetUsed() === null
+                      ? ('overview.spending.notSet' | transloco)
+                      : budgetUsed() + '%'
+                  }}
+                </b>
+              </div>
+              @if (budgetUsed() !== null) {
+                <app-progress-bar
+                  [value]="budgetUsed()!"
+                  [warnAt]="budgetThresholds.warning"
+                  [dangerAt]="budgetThresholds.danger"
+                  [label]="'overview.spending.budgetUsed' | transloco"
+                />
+              }
+              <app-table
+                class="overview__categories"
+                [columns]="categoryColumns()"
+                [data]="topCategories()"
+                [showHeader]="false"
+                [emptyTitle]="'overview.spending.nothingSpent' | transloco"
+              />
+            </div>
+          </div>
+        </app-card>
+      }
+
+      <!-- Upcoming dates -->
+      @if (widgets().dates) {
+        <app-card
+          class="overview__dates"
+          [class.overview__full-row]="!widgets().spending"
+          [titleText]="'overview.dates.title' | transloco"
+        >
+          <app-button
+            card-actions
+            variant="on-accent"
+            [text]="'overview.dates.add' | transloco"
+            [ariaLabel]="'overview.dates.addLabel' | transloco"
+            (clicked)="navigateTo('/calendar')"
+          />
+
+          <ul class="overview__date-list">
+            @for (item of dates(); track item.id) {
+              <li class="overview__date">
+                <app-date-chip [month]="item.month" [day]="item.day" [highlight]="item.soon" />
+                <div class="overview__date-text">
+                  <div class="overview__date-title">{{ item.title }}</div>
+                  <div class="overview__date-meta">
+                    @if (item.meta) {
+                      {{ item.meta }} ·
+                    }
+                    {{ item.date | daysUntil }}
+                  </div>
+                </div>
+                @if (item.soon) {
+                  <app-tag [labelText]="'overview.dates.soon' | transloco" color="alert" />
+                }
+              </li>
+            } @empty {
+              <li class="overview__empty">{{ 'overview.dates.empty' | transloco }}</li>
+            }
+          </ul>
+        </app-card>
+      }
+    </div>
+  }
+
+  <!-- Job applications -->
+  @if (widgets().applications) {
+    <app-card [titleText]="'overview.applications.title' | transloco" [padded]="false">
+      <span card-actions>{{ applicationCounts() }}</span>
+
+      <div class="overview__applications">
+        <!-- Table on wide screens -->
+        <app-table
+          class="overview__applications-table"
+          [columns]="applicationColumns()"
+          [data]="recentApplications()"
+          [locale]="locale()"
+          [emptyTitle]="'overview.applications.empty' | transloco"
+        />
+
+        <!-- Cards on narrow screens -->
+        <ul class="overview__applications-list">
+          @for (app of recentApplications(); track app.id) {
+            <li class="overview__application">
+              <div class="overview__application-head">
+                <span class="overview__application-company">{{ app.companyName }}</span>
+                <app-tag
+                  [labelText]="'jobApplications.status.' + app.status | transloco"
+                  [color]="statusColor(app.status)"
+                />
+              </div>
+              <div>{{ app.jobTitle }}</div>
+              <div class="overview__application-meta">
+                {{ location(app) }} ·
+                {{ app.dateApplied | date: datePattern() : undefined : locale() }}
+              </div>
+            </li>
+          } @empty {
+            <li class="overview__empty">{{ 'overview.applications.empty' | transloco }}</li>
+          }
+        </ul>
+      </div>
+    </app-card>
+  }
+
+  @if (nothingShown()) {
+    <app-card>
+      <p
+        class="overview__nothing"
+        [innerHTML]="
+          'overview.nothingShown'
+            | transloco: { customize: '<b>' + ('overview.customize' | transloco) + '</b>' }
+        "
+      ></p>
+    </app-card>
+  }
+</div>

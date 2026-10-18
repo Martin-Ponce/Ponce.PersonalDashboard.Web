@@ -1,0 +1,115 @@
+<app-card class="daily" [titleText]="'goals.daily.title' | transloco" [padded]="false">
+  <span card-actions>{{ 'goals.daily.hint' | transloco }}</span>
+
+  <div class="daily__content">
+    <!-- Days of this week, and Add -->
+    <div class="daily__toolbar">
+      <div class="daily__tabs" role="tablist" [attr.aria-label]="'goals.daily.dayTabs' | transloco">
+        @for (tab of tabs(); track tab.day) {
+          <button
+            type="button"
+            role="tab"
+            class="daily__tab"
+            [class.daily__tab--today]="tab.today"
+            [attr.aria-selected]="tab.day === selectedDay()"
+            [disabled]="tab.future"
+            [title]="tab.title"
+            (click)="pick(tab.day)"
+          >
+            <span class="daily__tab-weekday">{{ tab.weekday }}</span>
+            <span class="daily__tab-number">{{ tab.number }}</span>
+          </button>
+        }
+      </div>
+      <app-button iconName="plus" [text]="'goals.daily.add' | transloco" (clicked)="added.emit()" />
+    </div>
+
+    <!-- Progress for the selected day -->
+    <div class="daily__summary">
+      <div class="daily__summary-text">
+        <span class="daily__caption">{{ dayHeading() }}</span>
+        <span class="daily__summary-value">{{ dayProgressLabel() }}</span>
+      </div>
+      <app-progress-bar
+        class="daily__summary-bar"
+        size="sm"
+        tone="success"
+        [value]="dayProgress()"
+        [label]="dayProgressLabel()"
+      />
+      @if (missedThisWeek()) {
+        <app-tag color="danger-solid" [labelText]="missedLabel()" />
+      }
+    </div>
+
+    <!-- What the week dots mean -->
+    <div class="daily__legend">
+      <span class="daily__legend-item">
+        <app-goal-dot size="sm" state="done" />
+        {{ 'goals.daily.legend.done' | transloco }}
+      </span>
+      <span class="daily__legend-item">
+        <app-goal-dot size="sm" state="planned" />
+        {{ 'goals.daily.legend.planned' | transloco }}
+      </span>
+      <span class="daily__legend-item">
+        <app-goal-dot size="sm" state="missed" />
+        {{ 'goals.daily.legend.missed' | transloco }}
+      </span>
+      <span class="daily__legend-item">
+        <app-goal-dot size="sm" state="off" />
+        {{ 'goals.daily.legend.off' | transloco }}
+      </span>
+    </div>
+
+    <!-- Goals -->
+    <ul class="daily__list">
+      @for (row of rows(); track row.goal.id) {
+        <li class="daily__goal" [class]="'daily__goal--' + row.state">
+          <app-check-button
+            size="md"
+            [checked]="row.done"
+            [disabled]="!row.available"
+            [ariaLabel]="row.checkLabel"
+            (toggled)="toggle(row.goal, $event)"
+          />
+          <div class="daily__goal-body">
+            <div class="daily__goal-head">
+              <span class="daily__goal-title">{{ row.goal.title }}</span>
+              <span class="daily__goal-amount">{{ row.amount }}</span>
+              @if (row.tag; as tag) {
+                <app-tag [labelText]="tag.text" [color]="tag.color" />
+              }
+            </div>
+            <div class="daily__goal-foot">
+              <span class="daily__schedule">{{ row.schedule }}</span>
+              <span class="daily__week" role="img" [attr.aria-label]="row.weekLabel">
+                @for (dot of row.dots; track dot.day) {
+                  <app-goal-dot
+                    [state]="dot.state"
+                    [letter]="dot.letter"
+                    [selected]="dot.day === selectedDay()"
+                    [tooltip]="dot.title"
+                  />
+                }
+              </span>
+              @if (row.feeds) {
+                <app-tag color="accent-soft" iconName="arrow-right" [labelText]="row.feeds" />
+              }
+            </div>
+          </div>
+          <app-button
+            variant="icon"
+            size="sm"
+            iconName="pencil"
+            [ariaLabel]="'goals.edit' | transloco: { title: row.goal.title }"
+            [tooltip]="'goals.edit' | transloco: { title: row.goal.title }"
+            (clicked)="edited.emit(row.goal)"
+          />
+        </li>
+      } @empty {
+        <li class="daily__empty">{{ 'goals.daily.empty' | transloco }}</li>
+      }
+    </ul>
+  </div>
+</app-card>

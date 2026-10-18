@@ -1,0 +1,128 @@
+<app-modal [titleText]="title()" [width]="560">
+  <form class="goal-form" [formGroup]="form" (ngSubmit)="save()">
+    <app-form-field [label]="'goals.form.goal' | transloco" labelFor="goal-title">
+      <app-entry
+        #titleEntry
+        inputId="goal-title"
+        [placeholder]="
+          (isWeekly() ? 'goals.form.weeklyPlaceholder' : 'goals.form.dailyPlaceholder') | transloco
+        "
+        formControlName="title"
+        [showValidation]="tried()"
+      />
+    </app-form-field>
+
+    @if (isWeekly()) {
+      <!-- Weekly: which daily goal fills it -->
+      <app-form-field [label]="'goals.form.source' | transloco" labelFor="goal-source">
+        <app-select
+          selectId="goal-source"
+          [items]="sourceOptions()"
+          [placeholder]="'goals.form.sourcePlaceholder' | transloco"
+          formControlName="sourceId"
+        />
+      </app-form-field>
+    } @else {
+      <!-- Daily: planned days -->
+      <div class="goal-form__days">
+        <div class="goal-form__days-head">
+          <span id="goal-days-label" class="goal-form__label">
+            {{ 'goals.form.plannedDays' | transloco }}
+          </span>
+          <span class="goal-form__presets">
+            @for (preset of presets; track preset.key) {
+              <app-chip
+                size="sm"
+                [label]="'goals.schedule.' + preset.key | transloco"
+                (clicked)="setDays(preset.days)"
+              />
+            }
+          </span>
+        </div>
+        <div class="goal-form__day-grid" role="group" aria-labelledby="goal-days-label">
+          @for (chip of dayChips(); track chip.day) {
+            <app-chip
+              [stretch]="true"
+              [label]="chip.label"
+              [selected]="plannedDays().includes(chip.day)"
+              (clicked)="toggleDay(chip.day)"
+            />
+          }
+        </div>
+        <span class="goal-form__hint">{{ 'goals.form.plannedHint' | transloco }}</span>
+      </div>
+    }
+
+    @if (isWeekly()) {
+      <!-- Weekly: days per week its daily goal has to be done -->
+      <app-form-field [label]="'goals.form.weeklyTarget' | transloco" labelFor="goal-target">
+        <app-entry
+          inputId="goal-target"
+          type="number"
+          placeholder="3"
+          [min]="1"
+          [max]="maxWeeklyTarget"
+          [step]="1"
+          formControlName="targetCount"
+          [showValidation]="tried()"
+        />
+      </app-form-field>
+      <span class="goal-form__hint">{{ 'goals.form.weeklyTargetHint' | transloco }}</span>
+    } @else {
+      <div class="goal-form__grid">
+        <app-form-field [label]="'goals.form.dailyAmount' | transloco" labelFor="goal-amount">
+          <app-entry
+            inputId="goal-amount"
+            type="number"
+            placeholder="1"
+            [min]="0"
+            [step]="0.5"
+            formControlName="amount"
+            [showValidation]="tried()"
+          />
+        </app-form-field>
+        <app-form-field [label]="'goals.form.unit' | transloco" labelFor="goal-unit">
+          <app-select selectId="goal-unit" [items]="unitOptions()" formControlName="unit" />
+        </app-form-field>
+      </div>
+    }
+
+    @if (formError(); as error) {
+      <app-banner [text]="error" />
+    }
+
+    @if (confirmingDelete()) {
+      <app-delete-confirmation
+        [title]="'goals.form.deleteTitle' | transloco: { title: editingTitle() }"
+        [subtitle]="deleteText()"
+        [cancelText]="'goals.form.keep' | transloco"
+        (cancelled)="confirmingDelete.set(false)"
+        (confirmed)="confirmDelete()"
+      />
+    } @else {
+      <div class="goal-form__footer">
+        <div>
+          @if (editing()) {
+            <app-button
+              variant="danger-outline"
+              iconName="trash"
+              [text]="'goals.form.deleteGoal' | transloco"
+              (clicked)="confirmingDelete.set(true)"
+            />
+          }
+        </div>
+        <div class="goal-form__footer-actions">
+          <app-button
+            variant="secondary"
+            [text]="'common.cancel' | transloco"
+            (clicked)="close()"
+          />
+          <app-button
+            type="submit"
+            [text]="(editing() ? 'goals.form.saveChanges' : 'goals.form.saveGoal') | transloco"
+          />
+        </div>
+      </div>
+    }
+  </form>
+</app-modal>

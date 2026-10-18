@@ -1,0 +1,179 @@
+/*
+ * App color tokens, use these instead of hard-coded colors.
+ * Set data-theme on <html> to switch themes (sky is the default).
+ */
+
+/* ==========================================================================
+   Theme: Sky (default)
+   ========================================================================== */
+:root,
+[data-theme='sky'] {
+  --color-accent: #1e6fd9;
+  --color-accent-deep: #0f4fa8;
+  --color-accent-bar: #3b8eea;
+
+  --color-backdrop: #9cc9ee;
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Theme: Night
+   ========================================================================== */
+[data-theme='night'] {
+  --color-accent: #3558c9;
+  --color-accent-deep: #1e3690;
+  --color-accent-bar: #5577e0;
+
+  --color-backdrop: #16285a;
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Shared tokens (same in every theme)
+   ========================================================================== */
+:root {
+  /* ---------- Text ---------- */
+  --color-text: #10263d;
+  --color-text-muted: #3d5670;
+  --color-text-on-accent: #ffffff;
+
+  --color-link: #0b5cad;
+  --color-link-hover: #073e75;
+
+  /* ---------- Surfaces ---------- */
+  --color-white: #ffffff;
+  --color-white-soft: rgba(255, 255, 255, 0.9);
+
+  --color-surface-glass: rgba(255, 255, 255, 0.78);
+
+  --color-surface-tint: #e9f0f6;
+
+  --color-row-stripe: rgba(16, 38, 61, 0.05);
+  --color-row-divider: rgba(16, 38, 61, 0.07);
+  /* Progress bar track */
+  --color-track: rgba(16, 38, 61, 0.1);
+  --color-chart-baseline: rgba(16, 38, 61, 0.15);
+
+  /* Modal backdrop */
+  --color-scrim: rgba(10, 30, 55, 0.35);
+
+  /* ---------- Borders ---------- */
+  --color-border: #c6d5e3;
+  --color-border-strong: #b9c9d8;
+
+  /* ---------- Switches and radio marks ---------- */
+  --color-control-off: #d3dee8;
+  --color-control-off-border: #afc0d0;
+  --color-knob-border: #a8b8c8;
+
+  /* ---------- Gloss (glossy highlight overlays on buttons, bars, title bars) ---------- */
+  --color-gloss: rgba(255, 255, 255, 0.45);
+  --color-gloss-fade: rgba(255, 255, 255, 0);
+  --color-fill-on-accent: rgba(255, 255, 255, 0.2);
+  /* Layer it over a solid color: `var(--gradient-gloss), <color>` */
+  --gradient-gloss: linear-gradient(var(--color-gloss) 0 48%, var(--color-gloss-fade) 52%);
+
+  --color-accent-tint: color-mix(in srgb, var(--color-accent) 12%, var(--color-white));
+  --color-accent-wash: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  --color-accent-line: color-mix(in srgb, var(--color-accent) 45%, transparent);
+
+  /* ---------- Default surface gradient ---------- */
+  --gradient-surface: linear-gradient(var(--color-white), var(--color-surface-tint));
+
+  /* ---------- Shadows ---------- */
+  --color-shadow-soft: rgba(0, 30, 70, 0.12);
+  --color-shadow: rgba(0, 30, 70, 0.2);
+  --color-shadow-strong: rgba(0, 30, 70, 0.3);
+  --color-shadow-dark: rgba(0, 0, 0, 0.25);
+
+  /* ---------- Status: success ---------- */
+  --color-success: #3db54a;
+  --color-success-deep: #2e9e1f;
+  --color-success-text: #1e7a2e;
+  --color-success-glow: #b6ff9e;
+  --color-success-shadow: rgba(30, 120, 40, 0.35);
+  --color-success-wash: color-mix(in srgb, var(--color-success) 10%, transparent);
+
+  /* ---------- Status: danger ---------- */
+  --color-danger: #d9442e;
+  --color-danger-deep: #9a1f10;
+  --color-danger-text: #b3261e;
+  /* Body text on danger panels */
+  --color-danger-body: #5a2a24;
+  --color-danger-border: #f2a99e;
+  --color-danger-shadow: rgba(120, 20, 10, 0.3);
+  --color-danger-wash: color-mix(in srgb, var(--color-danger) 8%, transparent);
+  --color-danger-tint: #ffe3de;
+  --gradient-danger-surface: linear-gradient(var(--color-white), var(--color-danger-tint));
+
+  /* ---------- Highlight (orange): current month bar, upcoming date chip ---------- */
+  --color-highlight: #f29a1f;
+  --color-highlight-deep: #c47500;
+  --color-highlight-text: #3a2100;
+  --color-highlight-glow: #ffd08a;
+
+  /* ---------- Past (calendar days that already passed): grey diagonal stripes ---------- */
+  --color-past-stripe: #eef2f6;
+  --color-past-stripe-dark: #e2e8ee;
+  --pattern-past: repeating-linear-gradient(
+    135deg,
+    var(--color-past-stripe) 0 8px,
+    var(--color-past-stripe-dark) 8px 16px
+  );
+
+  /* ---------- Notice (yellow): "under construction" badge (with --gradient-gloss) ---------- */
+  --color-notice: #f5b800;
+  --color-notice-border: #c99400;
+
+  /* ---------- Neutral status (e.g. no budget set) ---------- */
+  --color-neutral: #8a99a8;
+
+  /* ---------- Pills (status / type tags): gradient start -> end, text, border ---------- */
+  /* Blue: Applied, Fixed */
+  --color-pill-info-start: #eef4fd;
+  --color-pill-info-end: #d6e5fa;
+  --color-pill-info-text: #1d4f9a;
+  --color-pill-info-border: #b3cbef;
+  /* Amber: Interview, Variable */
+  --color-pill-warning-start: #fff3e0;
+  --color-pill-warning-end: #ffddaf;
+  --color-pill-warning-text: #7a4200;
+  --color-pill-warning-border: #f0c27e;
+  /* Green: Offer */
+  --color-pill-success-start: #e9f8ea;
+  --color-pill-success-end: #c8edcb;
+  --color-pill-success-text: #1b6326;
+  --color-pill-success-border: #96d39d;
+  /* Purple: One-off */
+  --color-pill-purple-start: #f6eefb;
+  --color-pill-purple-end: #e6d6f3;
+  --color-pill-purple-text: #5b2f86;
+  --color-pill-purple-border: #cdb3e6;
+  /* Gray: Rejected */
+  --color-pill-neutral-start: #f4f4f4;
+  --color-pill-neutral-end: #e3e3e3;
+  --color-pill-neutral-text: #555555;
+  --color-pill-neutral-border: #cfcfcf;
+
+  /* ---------- Data / category palette (charts, category dots) ---------- */
+  --color-data-blue: var(--color-accent);
+  --color-data-orange: #f29a1f;
+  --color-data-purple: #8c6bc8;
+  --color-data-teal: #2ba39a;
+  --color-data-gray: #9aa9b8;
+  --color-data-pink: #e0679a;
+  --color-data-red: #d9442e;
+  --color-data-green: #3db54a;
+  --color-data-slate: #5a6b7c;
+  --color-data-emerald: #17a673;
+  --color-data-gold: #c9a227;
+  --color-data-periwinkle: #6b8fd6;
+  --color-data-rose: #e07bb5;
+
+  /* ---------- LCD display (header version badge) ---------- */
+  --color-lcd-text: #b8f5ff;
+  --color-lcd-start: #1d3a57;
+  --color-lcd-end: #0b1e31;
+}

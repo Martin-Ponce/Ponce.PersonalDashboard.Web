@@ -1,0 +1,123 @@
+.tag {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tag--with-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.tag__count {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* ---------- Soft pills ---------- */
+.tag--info {
+  background: linear-gradient(var(--color-pill-info-start), var(--color-pill-info-end));
+  color: var(--color-pill-info-text);
+  border-color: var(--color-pill-info-border);
+}
+
+.tag--warning {
+  background: linear-gradient(var(--color-pill-warning-start), var(--color-pill-warning-end));
+  color: var(--color-pill-warning-text);
+  border-color: var(--color-pill-warning-border);
+}
+
+.tag--success {
+  background: linear-gradient(var(--color-pill-success-start), var(--color-pill-success-end));
+  color: var(--color-pill-success-text);
+  border-color: var(--color-pill-success-border);
+}
+
+.tag--danger {
+  background: var(--gradient-danger-surface);
+  color: var(--color-danger-deep);
+  border-color: var(--color-danger-border);
+}
+
+.tag--purple {
+  background: linear-gradient(var(--color-pill-purple-start), var(--color-pill-purple-end));
+  color: var(--color-pill-purple-text);
+  border-color: var(--color-pill-purple-border);
+}
+
+.tag--neutral {
+  background: linear-gradient(var(--color-pill-neutral-start), var(--color-pill-neutral-end));
+  color: var(--color-pill-neutral-text);
+  border-color: var(--color-pill-neutral-border);
+}
+
+/* ---------- Solid pills ---------- */
+.tag--success-solid,
+.tag--danger-solid,
+.tag--neutral-solid {
+  padding: 5px 12px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}
+
+.tag--success-solid {
+  background: var(--gradient-gloss), var(--color-success);
+}
+
+.tag--danger-solid {
+  background: var(--gradient-gloss), var(--color-danger);
+}
+
+.tag--neutral-solid {
+  background: var(--gradient-gloss), var(--color-neutral);
+}
+
+/* ---------- Badges ---------- */
+.tag--alert {
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  background: var(--gradient-gloss), var(--color-danger);
+  box-shadow: 0 1px 3px var(--color-shadow-dark);
+}
+
+.tag--notice {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-text);
+  background: var(--gradient-gloss), var(--color-notice);
+  border-color: var(--color-notice-border);
+}
+
+.tag--accent-soft {
+  color: var(--color-accent-deep);
+  background: var(--color-accent-tint);
+  border-color: var(--color-accent-line);
+}
+
+.tag__icon {
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: -2px;
+}
+
+.tag--accent {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-text-on-accent);
+  background: var(--gradient-gloss), var(--color-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+}

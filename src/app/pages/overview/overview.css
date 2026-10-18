@@ -1,0 +1,197 @@
+:host {
+  display: block;
+}
+
+.overview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview__customize {
+  position: absolute;
+  top: 88px;
+  right: 0;
+  z-index: 5;
+  width: 340px;
+  max-width: 100%;
+}
+
+/* ---------- At a glance ---------- */
+.overview__summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* ---------- Spending + dates row ---------- */
+.overview__widgets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.overview__spending {
+  grid-column: span 2;
+}
+
+.overview__dates {
+  grid-column: span 1;
+}
+
+.overview__full-row {
+  grid-column: 1 / -1;
+}
+
+.overview__spending-body {
+  display: flex;
+  gap: 24px;
+}
+
+.overview__budget {
+  width: 236px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.overview__budget-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overview__categories {
+  margin-top: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.overview__date-list,
+.overview__applications-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overview__date-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overview__date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.overview__date-text {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 13px;
+}
+
+.overview__date-title {
+  font-weight: 700;
+}
+
+.overview__date-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Job applications ---------- */
+.overview__applications {
+  padding: 12px 16px 16px;
+}
+
+.overview__applications-list {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overview__application {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--color-row-stripe);
+  font-size: 13px;
+}
+
+.overview__application-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.overview__application-company {
+  font-weight: 700;
+}
+
+.overview__application-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Empty states ---------- */
+.overview__empty {
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.overview__nothing {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1280px) {
+  .overview__summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .overview__spending,
+  .overview__dates {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .overview__summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .overview__spending-body {
+    flex-direction: column;
+  }
+
+  .overview__budget {
+    width: auto;
+  }
+
+  .overview__applications-table {
+    display: none;
+  }
+
+  .overview__applications-list {
+    display: flex;
+  }
+
+  .overview__customize {
+    top: 0;
+  }
+}

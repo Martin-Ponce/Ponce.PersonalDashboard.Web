@@ -1,0 +1,187 @@
+<div class="applications">
+  <app-page-header
+    [header]="'nav.jobApplications' | transloco"
+    [subtitle]="'jobApplications.subtitle' | transloco"
+    [buttonText]="'jobApplications.add' | transloco"
+    buttonIcon="plus"
+    (buttonClick)="openNewApplication()"
+  />
+
+  <app-card
+    class="applications__card"
+    [titleText]="'jobApplications.listTitle' | transloco: { period: periodLabel() }"
+    [padded]="false"
+  >
+    <span card-actions>{{ countLabel() }}</span>
+
+    <div class="applications__content">
+      @if (errorMessage()) {
+        <app-banner [text]="errorMessage()" />
+      }
+
+      <!-- Month, filters and pipeline -->
+      <div class="applications__toolbar">
+        <div class="applications__period">
+          <app-month-picker
+            idPrefix="applications"
+            [(year)]="year"
+            [(month)]="month"
+            [minYear]="minYear"
+            [maxYear]="maxYear"
+          />
+
+          <div class="applications__filtering">
+            <app-button
+              variant="secondary"
+              iconName="filter"
+              [text]="'common.filters.button' | transloco"
+              [active]="activeFilters() > 0"
+              [badge]="activeFilters() || undefined"
+              (clicked)="openFilters()"
+            />
+            @if (activeFilters()) {
+              <app-button
+                variant="link"
+                [text]="'common.filters.clear' | transloco"
+                (clicked)="clearFilters()"
+              />
+            }
+            <span class="applications__sort-summary">{{ sortSummary() }}</span>
+          </div>
+        </div>
+
+        <app-card variant="inset" [padded]="false">
+          <div class="applications__pipeline">
+            <div class="applications__pipeline-caption">
+              {{ 'jobApplications.pipeline' | transloco }}<br />{{ periodShort() }}
+            </div>
+            @for (stage of pipeline(); track stage.value) {
+              <app-tag
+                [labelText]="statusLabel(stage.value)"
+                [color]="stage.tagColor"
+                [count]="stage.count"
+              />
+            }
+          </div>
+        </app-card>
+      </div>
+
+      <!-- Applications -->
+      <div class="applications__scroll">
+        <!-- Table on wide screens -->
+        <app-table
+          class="applications__table"
+          [columns]="columns()"
+          [data]="pagedApplications()"
+          [locale]="locale()"
+          [stickyHeader]="true"
+          [divided]="true"
+          [emptyTitle]="emptyState().title"
+          [emptyText]="emptyState().text"
+        />
+
+        <!-- Cards on narrow screens -->
+        <ul class="applications__list">
+          @for (application of pagedApplications(); track application.id) {
+            <li class="applications__item">
+              <div class="applications__item-head">
+                <span class="applications__company">
+                  <span
+                    class="applications__initial"
+                    [style.background-color]="companyColor(application)"
+                    aria-hidden="true"
+                  >
+                    {{ application.companyName.charAt(0).toLocaleUpperCase() }}
+                  </span>
+                  {{ application.companyName }}
+                </span>
+                <app-tag
+                  [labelText]="statusLabel(application.status)"
+                  [color]="statusColor(application.status)"
+                />
+              </div>
+              <div>{{ application.jobTitle }}</div>
+              <div class="applications__item-foot">
+                <span>
+                  {{ location(application) }} ·
+                  @if (application.salary !== null) {
+                    {{ salaryLabel(application) }} ·
+                  }
+                  {{ application.dateApplied | date: datePattern() : undefined : locale() }}
+                </span>
+                <app-button
+                  variant="icon"
+                  size="sm"
+                  iconName="pencil"
+                  [ariaLabel]="
+                    'jobApplications.editLabel' | transloco: { company: application.companyName }
+                  "
+                  (clicked)="editApplication(application)"
+                />
+              </div>
+            </li>
+          } @empty {
+            <li class="applications__empty">
+              <div class="applications__empty-title">{{ emptyState().title }}</div>
+              <div>{{ emptyState().text }}</div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      @if (matchCount()) {
+        <app-paginator
+          class="applications__pager"
+          [total]="matchCount()"
+          [page]="page()"
+          (pageChange)="page.set($event)"
+          [(pageSize)]="pageSize"
+        />
+      }
+
+      <!-- Totals (whole month) -->
+      <app-card class="applications__totals" variant="inset" [padded]="false">
+        <div class="applications__totals-body">
+          @if (activeFilters()) {
+            <div class="applications__filtered">
+              <app-tag [labelText]="'common.filters.filtered' | transloco" color="accent" />
+              <span class="applications__filtered-text">{{ filteredSummary() }}</span>
+            </div>
+          }
+          <app-metric
+            [caption]="'jobApplications.totals.sent' | transloco"
+            [value]="sent()"
+            align="end"
+          />
+          <div class="applications__divider"></div>
+          <app-metric
+            [caption]="'jobApplications.totals.active' | transloco"
+            [value]="stillActive()"
+            align="end"
+          />
+          <div class="applications__divider"></div>
+          <app-metric
+            [caption]="'jobApplications.totals.responseRate' | transloco"
+            [value]="responseRate()"
+            [tone]="sent() ? 'success' : 'muted'"
+            align="end"
+          />
+        </div>
+      </app-card>
+    </div>
+  </app-card>
+
+  <app-application-form-modal
+    [periodLabel]="periodLabel()"
+    [newApplicationDate]="newApplicationDate()"
+    (saved)="onApplicationSaved($event)"
+    (deleted)="onApplicationDeleted($event)"
+  />
+  <app-application-filter-modal
+    [periodLabel]="periodLabel()"
+    [year]="year()"
+    [month]="month()"
+    [cities]="cities()"
+    (applied)="filters.set($event)"
+  />
+</div>

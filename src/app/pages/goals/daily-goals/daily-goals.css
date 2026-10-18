@@ -1,0 +1,264 @@
+:host {
+  display: block;
+  min-height: 0;
+}
+
+.daily {
+  height: 100%;
+}
+
+.daily__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Toolbar: days of the week and Add ---------- */
+.daily__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-track);
+}
+
+.daily__tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.daily__tab {
+  width: 52px;
+  height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--gradient-surface);
+  font-family: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.daily__tab:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.daily__tab--today {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.daily__tab[aria-selected='true'] {
+  border-color: var(--color-accent-deep);
+  background: var(--gradient-gloss), var(--color-accent);
+  color: var(--color-text-on-accent);
+  text-shadow: 0 1px 1px var(--color-shadow-dark);
+  box-shadow: none;
+}
+
+.daily__tab:disabled {
+  border-style: dashed;
+  border-color: var(--color-border);
+  background: var(--color-surface-glass);
+  color: var(--color-neutral);
+  cursor: not-allowed;
+}
+
+.daily__tab-weekday {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.daily__tab-number {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ---------- Selected day progress ---------- */
+.daily__summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px 6px;
+}
+
+.daily__summary-text {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.daily__caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.daily__summary-value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.daily__summary-bar {
+  flex-grow: 1;
+}
+
+.daily__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 2px 20px 4px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.daily__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Goals ---------- */
+.daily__list {
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 20px 20px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.daily__goal {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white-soft);
+}
+
+.daily__goal--done {
+  border-color: var(--color-pill-success-border);
+  background:
+    linear-gradient(var(--color-success-wash), var(--color-success-wash)), var(--color-white-soft);
+}
+
+.daily__goal--missed {
+  border-color: var(--color-danger-border);
+  background:
+    linear-gradient(var(--color-danger-wash), var(--color-danger-wash)), var(--color-white-soft);
+}
+
+.daily__goal--off {
+  border-style: dashed;
+  background: var(--color-surface-glass);
+}
+
+.daily__goal-body {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.daily__goal-head,
+.daily__goal-foot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.daily__goal-title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.daily__goal--done .daily__goal-title {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.daily__goal-amount,
+.daily__schedule {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.daily__schedule {
+  min-width: 92px;
+  font-size: 12px;
+}
+
+.daily__week {
+  display: flex;
+  gap: 4px;
+}
+
+.daily__empty {
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px dashed var(--color-border-strong);
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 560px) {
+  .daily__toolbar,
+  .daily__summary,
+  .daily__legend,
+  .daily__list {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .daily__tabs {
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .daily__tab {
+    width: auto;
+    flex: 1 1 0;
+    height: 48px;
+  }
+
+  .daily__summary {
+    flex-wrap: wrap;
+  }
+
+  .daily__summary-bar {
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .daily__goal {
+    gap: 10px;
+    padding: 10px;
+  }
+}

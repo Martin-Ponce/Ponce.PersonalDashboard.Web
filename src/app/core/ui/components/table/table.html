@@ -1,0 +1,110 @@
+<table class="table" [class.table--divided]="divided()">
+  @if (showHeader()) {
+    <thead class="table__head" [class.table__head--sticky]="stickyHeader()">
+      <tr>
+        @for (col of columns(); track col.key) {
+          <th
+            class="table__th"
+            [class.table__cell--right]="col.align === 'right'"
+            [class.table__cell--actions]="col.type === 'actions'"
+          >
+            @if (col.type === 'actions') {
+              <span class="table__visually-hidden">{{ col.label }}</span>
+            } @else {
+              {{ col.label }}
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+  }
+
+  <tbody>
+    @for (row of data(); track $index) {
+      <tr class="table__row">
+        @for (col of columns(); track col.key) {
+          <td
+            class="table__td"
+            [class.table__cell--right]="col.align === 'right'"
+            [class.table__cell--strong]="col.emphasis"
+            [class.table__cell--muted]="col.muted"
+            [class.table__cell--actions]="col.type === 'actions'"
+            [class]="col.getTone ? 'table__cell--tone-' + col.getTone(row) : ''"
+          >
+            @switch (col.type) {
+              @case ('date') {
+                {{
+                  $any(cellValue(col, row))
+                    | date: col.dateFormat ?? 'dd MMM yyyy' : undefined : locale()
+                }}
+              }
+
+              @case ('tag') {
+                <app-tag
+                  [labelText]="cellLabel(col, row)"
+                  [color]="col.getTagColor?.(row) ?? 'neutral'"
+                />
+              }
+
+              @case ('initial') {
+                <span class="table__initial-label">
+                  <span
+                    class="table__initial"
+                    [style.background-color]="col.getBadgeColor?.(row) ?? 'var(--color-data-gray)'"
+                    aria-hidden="true"
+                  >
+                    {{ cellLabel(col, row).charAt(0).toLocaleUpperCase() }}
+                  </span>
+                  {{ cellLabel(col, row) }}
+                </span>
+              }
+
+              @case ('dot') {
+                <span class="table__dot-label">
+                  <span
+                    class="table__dot"
+                    [style.background-color]="col.getDotColor?.(row) ?? 'var(--color-data-gray)'"
+                  ></span>
+                  {{ cellLabel(col, row) }}
+                </span>
+              }
+
+              @case ('actions') {
+                <div class="table__actions">
+                  @for (action of col.actions ?? []; track action.icon) {
+                    <app-button
+                      variant="icon"
+                      size="sm"
+                      [iconName]="action.icon"
+                      [ariaLabel]="action.title(row)"
+                      [tooltip]="action.title(row)"
+                      [isDisabled]="action.isDisabled?.(row) ?? false"
+                      [isVisible]="action.isVisible?.(row) ?? true"
+                      (clicked)="action.action(row)"
+                    />
+                  }
+                </div>
+              }
+
+              @default {
+                {{ cellLabel(col, row) }}
+              }
+            }
+          </td>
+        }
+      </tr>
+    } @empty {
+      <tr>
+        <td class="table__empty" [attr.colspan]="columns().length">
+          <div class="table__empty-title">{{ emptyTitle() || ('common.noData' | transloco) }}</div>
+          @if (emptyText()) {
+            <div class="table__empty-text">{{ emptyText() }}</div>
+          }
+          <div class="table__empty-actions">
+            <ng-content select="[table-empty-actions]" />
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

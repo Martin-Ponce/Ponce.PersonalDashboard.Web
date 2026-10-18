@@ -1,0 +1,77 @@
+<app-modal
+  [titleText]="
+    (isEdit() ? 'finances.budgetForm.editTitle' : 'finances.budgetForm.setTitle')
+      | transloco: { period: periodLabel() }
+  "
+>
+  <form class="budget-form" (submit)="$event.preventDefault(); save()">
+    <app-card variant="inset" [padded]="false">
+      <div class="budget-form__period">
+        <app-icon name="calendar" [size]="20" />
+        <div>
+          <div class="budget-form__caption">{{ 'finances.budgetForm.caption' | transloco }}</div>
+          <div class="budget-form__period-label">{{ periodLabel() }}</div>
+        </div>
+      </div>
+    </app-card>
+
+    @if (!isEdit()) {
+      <p class="budget-form__intro">{{ 'finances.budgetForm.firstTime' | transloco }}</p>
+    }
+
+    <app-form-field
+      [label]="'finances.budgetForm.amountLabel' | transloco"
+      labelFor="budget-amount"
+    >
+      <app-entry
+        #amountEntry
+        inputId="budget-amount"
+        type="number"
+        size="lg"
+        placeholder="0"
+        [prefix]="currencySymbol()"
+        [min]="0"
+        [step]="10"
+        [formControl]="amount"
+        [showValidation]="tried()"
+      />
+      @if (suggestions().length) {
+        <div class="budget-form__suggestions">
+          @for (suggestion of suggestions(); track suggestion.label) {
+            <app-chip size="sm" [label]="suggestion.label" (clicked)="pick(suggestion.amount)" />
+          }
+        </div>
+      }
+    </app-form-field>
+
+    @if (usedPercent() !== null) {
+      <app-card variant="inset" [padded]="false">
+        <div class="budget-form__preview">
+          <div class="budget-form__preview-text">
+            <span>{{ spentText() }}</span>
+            <b>{{ 'finances.budgetForm.used' | transloco: { percent: usedPercent() } }}</b>
+          </div>
+          <app-progress-bar
+            size="sm"
+            [value]="usedPercent()!"
+            [warnAt]="thresholds.warning"
+            [dangerAt]="thresholds.danger"
+            [label]="'finances.budgetUsed' | transloco"
+          />
+        </div>
+      </app-card>
+    }
+
+    @if (tried() && amount.invalid) {
+      <app-banner [text]="'finances.budgetForm.required' | transloco" />
+    }
+
+    <div class="budget-form__actions">
+      <app-button variant="secondary" [text]="'common.cancel' | transloco" (clicked)="close()" />
+      <app-button
+        type="submit"
+        [text]="(isEdit() ? 'finances.budgetForm.save' : 'finances.budgetForm.set') | transloco"
+      />
+    </div>
+  </form>
+</app-modal>

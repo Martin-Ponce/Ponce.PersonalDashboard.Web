@@ -1,0 +1,716 @@
+{
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español",
+    "sv": "Svenska"
+  },
+  "theme": {
+    "label": "Theme",
+    "option": "{{name}} theme",
+    "sky": "Sky",
+    "night": "Night"
+  },
+  "common": {
+    "dateFormats": {
+      "long": "EEEE, d MMMM y",
+      "monthYear": "MMMM y"
+    },
+    "relativeDays": {
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "yesterday": "Yesterday",
+      "days": {
+        "one": "{{count}} day",
+        "other": "{{count}} days"
+      },
+      "weeks": {
+        "one": "{{count}} week",
+        "other": "{{count}} weeks"
+      },
+      "in": "In {{value}}",
+      "ago": "{{value}} ago"
+    },
+    "close": "Close",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "noData": "No data",
+    "noOptions": "No options available",
+    "online": "Online",
+    "offline": "Offline",
+    "deleteConfirmation": {
+      "title": "Delete this record?",
+      "subtitle": "This can’t be undone.",
+      "confirm": "Yes, delete"
+    },
+    "filters": {
+      "title": "Filter & sort · {{period}}",
+      "sortBy": "Sort by",
+      "order": "Order",
+      "resetAll": "Reset all",
+      "button": "Filter & sort",
+      "clear": "Clear",
+      "filtered": "Filtered",
+      "sortSummary": "Sorted by {{field}}, {{order}}",
+      "noMatchText": "Try removing a filter, or clear them all."
+    },
+    "monthPicker": {
+      "previous": "Previous month",
+      "next": "Next month",
+      "year": "Year",
+      "month": "Month"
+    },
+    "pagination": {
+      "showing": "Showing",
+      "of": "of {{total}}",
+      "pages": "Pages",
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Page {{page}}",
+      "rowsPerPage": "Rows per page"
+    }
+  },
+  "calendar": {
+    "subtitle": "Click any day to see, add or complete its events",
+    "loadError": "We couldn’t load your calendar. Check your connection and try again.",
+    "saveError": "We couldn’t save your changes. Please try again.",
+    "today": "Today",
+    "eventCount": {
+      "one": "{{count}} event",
+      "other": "{{count}} events"
+    },
+    "completedWord": {
+      "one": "completed",
+      "other": "completed"
+    },
+    "more": "+{{count}} more",
+    "cell": {
+      "noEvents": "no events",
+      "passed": "passed",
+      "unfinished": "Has unfinished events"
+    },
+    "upcoming": {
+      "title": "Coming up",
+      "from": "From today",
+      "empty": "Nothing coming up. Click a day to add an event."
+    },
+    "legend": {
+      "title": "Legend",
+      "today": "Today",
+      "events": "Has events",
+      "empty": "No events",
+      "past": "Already passed",
+      "missed": "Passed with unfinished events",
+      "eventsIn": {
+        "one": "event in {{month}}",
+        "other": "events in {{month}}"
+      }
+    },
+    "day": {
+      "pastNote": "This date has passed.",
+      "pastNoteUnfinished": "This date has passed. You can still complete or remove what’s left.",
+      "events": "Events",
+      "allDay": "All day",
+      "notCompleted": "Not completed",
+      "completed": "Completed",
+      "markDone": "Mark as done: {{title}}",
+      "markNotDone": "Mark as not done: {{title}}",
+      "delete": "Delete {{title}}",
+      "deleteTitle": "Delete “{{title}}”? This can’t be undone.",
+      "keep": "Keep",
+      "empty": "Nothing planned for this day yet.",
+      "addTitle": "Add an event",
+      "title": "Title",
+      "titlePlaceholder": "e.g. Pay phone bill",
+      "time": "Time",
+      "note": "Note",
+      "notePlaceholder": "e.g. Bring the documents",
+      "optional": "(optional)",
+      "add": "Add",
+      "titleRequired": "Please give the event a title.",
+      "done": "Done"
+    }
+  },
+  "goals": {
+    "subtitle": "Tick off daily goals and they add up toward your weekly ones",
+    "thisWeek": "This week",
+    "edit": "Edit {{title}}",
+    "resetIn": {
+      "one": "Weekly goals reset tomorrow",
+      "other": "Weekly goals reset in {{count}} days"
+    },
+    "loadError": "We couldn’t load your goals. Check your connection and try again.",
+    "saveError": "We couldn’t save your changes. Please try again.",
+    "units": {
+      "Minutes": {
+        "one": "{{count}} minute",
+        "other": "{{count}} minutes"
+      },
+      "Hours": {
+        "one": "{{count}} hour",
+        "other": "{{count}} hours"
+      },
+      "Times": {
+        "one": "{{count}} time",
+        "other": "{{count}} times"
+      }
+    },
+    "unitNames": {
+      "Minutes": "minutes",
+      "Hours": "hours",
+      "Times": "times"
+    },
+    "schedule": {
+      "everyDay": "Every day",
+      "weekdays": "Weekdays",
+      "weekends": "Weekends",
+      "none": "No set days"
+    },
+    "daily": {
+      "title": "Daily goals",
+      "hint": "Repeat every day · reset at midnight",
+      "dayTabs": "Day of the week",
+      "add": "Add daily goal",
+      "todayHeading": "Today · {{day}}",
+      "today": "Today",
+      "future": "Not available yet",
+      "past": "{{day}} (you can still log it)",
+      "progress": "{{done}} of {{planned}} planned done",
+      "bonus": "{{count}} bonus",
+      "missedWeek": {
+        "one": "{{count}} missed this week",
+        "other": "{{count}} missed this week"
+      },
+      "legend": {
+        "done": "Done",
+        "planned": "Planned",
+        "missed": "Missed",
+        "off": "Not planned (still optional)"
+      },
+      "tags": {
+        "missed": "Missed",
+        "bonus": "Bonus",
+        "notCreated": "Not created yet",
+        "optionalToday": "Optional today",
+        "optionalOn": "Optional on {{day}}",
+        "plannedToday": "Planned today",
+        "plannedOn": "Planned on {{day}}"
+      },
+      "addsTo": "Adds to {{goals}}",
+      "complete": "Complete {{title}} for {{day}}",
+      "undo": "Undo {{title}} for {{day}}",
+      "weekLabel": "{{title}}: planned {{schedule}}. Done on {{days}}.",
+      "noDays": "no days yet",
+      "dots": {
+        "done": "{{day}}: done",
+        "bonus": "{{day}}: done (bonus)",
+        "missed": "{{day}}: missed",
+        "planned": "{{day}}: planned",
+        "off": "{{day}}: not planned"
+      },
+      "empty": "No daily goals yet. Add one to start building a habit."
+    },
+    "weekly": {
+      "title": "Weekly goals",
+      "hint": "Filled by your daily goals · reset on Monday",
+      "locked": "Weekly goals can’t be ticked by hand. Each day you complete their daily goal counts here.",
+      "add": "Add weekly goal",
+      "progressCaption": "Week progress",
+      "progress": "{{done}} of {{count}} goals completed",
+      "of": "{{value}} of {{target}}",
+      "from": "From daily: {{title}} ({{amount}} each time)",
+      "complete": "Done for this week!",
+      "toGo": {
+        "one": "{{amount}} to go",
+        "other": "{{amount}} to go"
+      },
+      "badgeComplete": "Completed",
+      "badgeLocked": "Locked: updates from a daily goal",
+      "empty": "No weekly goals yet. Add one to set how many days a week a daily goal should be done."
+    },
+    "form": {
+      "newDaily": "New daily goal",
+      "newWeekly": "New weekly goal",
+      "editDaily": "Edit daily goal",
+      "editWeekly": "Edit weekly goal",
+      "goal": "Goal",
+      "dailyPlaceholder": "e.g. Go to the gym",
+      "weeklyPlaceholder": "Optional · uses the daily goal’s name",
+      "plannedDays": "Planned days",
+      "plannedHint": "You can still tick the goal on other days. Planned days are just a reminder, and missing one gets flagged.",
+      "source": "Daily goal",
+      "sourcePlaceholder": "Pick a daily goal",
+      "sourceOption": "{{title}} ({{amount}} a day)",
+      "dailyAmount": "Amount each day",
+      "weeklyTarget": "Days per week",
+      "weeklyTargetHint": "How many days a week the daily goal has to be completed. Deleting the daily goal deletes this goal too.",
+      "unit": "Unit",
+      "nameRequired": "Please give the goal a name.",
+      "amountRequired": "Please enter an amount greater than zero.",
+      "targetRequired": "Enter a whole number of days from 1 to {{max}}.",
+      "sourceRequired": "Pick the daily goal this one belongs to. Each daily goal can have one weekly goal.",
+      "daysRequired": "Pick at least one planned day.",
+      "deleteGoal": "Delete goal",
+      "saveChanges": "Save changes",
+      "saveGoal": "Save goal",
+      "deleteTitle": "Delete “{{title}}”?",
+      "deleteWeekly": "Its progress for this week will be lost; the daily goal stays. This can’t be undone.",
+      "deleteDaily": "Its history will be removed. This can’t be undone.",
+      "deleteDailyLinked": "Its history and its weekly goal will be deleted too. This can’t be undone.",
+      "keep": "Keep it"
+    }
+  },
+  "jobApplications": {
+    "status": {
+      "Applied": "Applied",
+      "Interview": "Interview",
+      "Offer": "Offer",
+      "Rejected": "Rejected"
+    },
+    "subtitle": "Every application you’ve sent, month by month",
+    "add": "Add application",
+    "listTitle": "Applications · {{period}}",
+    "count": {
+      "one": "{{count}} application",
+      "other": "{{count}} applications"
+    },
+    "countFiltered": {
+      "one": "{{shown}} of {{count}} application",
+      "other": "{{shown}} of {{count}} applications"
+    },
+    "pipeline": "Pipeline",
+    "workModes": {
+      "OnSite": "On-site",
+      "Hybrid": "Hybrid",
+      "Remote": "Remote"
+    },
+    "columns": {
+      "company": "Company",
+      "role": "Role",
+      "status": "Status",
+      "location": "Location",
+      "appliedOn": "Date applied",
+      "salary": "Salary",
+      "updatedAt": "Last updated",
+      "actions": "Actions"
+    },
+    "editLabel": "Edit {{company}} application",
+    "emptyTitle": "No applications in {{period}}",
+    "emptyText": "Use Add application to log the first one this month.",
+    "loadError": "We couldn’t load this month’s applications. Check your connection and try again.",
+    "saveError": "We couldn’t save your changes. Please try again.",
+    "noMatchTitle": "No applications match your filters",
+    "filteredSummary": "Showing {{shown}} of {{count}} applications · totals below cover the whole month",
+    "totals": {
+      "sent": "Applications sent",
+      "active": "Still active",
+      "responseRate": "Response rate"
+    },
+    "form": {
+      "newTitle": "New application",
+      "editTitle": "Edit application",
+      "company": "Company",
+      "companyPlaceholder": "e.g. Northwind Labs",
+      "role": "Role",
+      "rolePlaceholder": "e.g. Product Designer",
+      "location": "Location",
+      "locationPlaceholder": "e.g. Madrid",
+      "salary": "Salary (optional)",
+      "salaryPlaceholder": "e.g. 45000",
+      "workMode": "Work mode",
+      "status": "Status",
+      "companyRequired": "Please enter the company name.",
+      "roleRequired": "Please enter the role you applied for.",
+      "salaryInvalid": "Leave the salary empty or enter an amount greater than zero.",
+      "deleteApplication": "Delete application",
+      "saveChanges": "Save changes",
+      "saveApplication": "Save application",
+      "deleteTitle": "Delete the {{company}} application?",
+      "deleteText": "It will be removed from {{period}} and the counts will update. This can’t be undone.",
+      "keep": "Keep it"
+    },
+    "filters": {
+      "search": "Company or role contains",
+      "searchPlaceholder": "e.g. designer",
+      "status": "Status",
+      "workMode": "Work mode",
+      "city": "City",
+      "show": {
+        "one": "Show {{count}} application",
+        "other": "Show {{count}} applications"
+      },
+      "fields": {
+        "appliedOn": "Date applied",
+        "updatedAt": "Last updated",
+        "company": "Company",
+        "role": "Role",
+        "status": "Status"
+      },
+      "orders": {
+        "appliedOn": {
+          "asc": "Oldest first",
+          "desc": "Newest first"
+        },
+        "updatedAt": {
+          "asc": "Oldest first",
+          "desc": "Most recent first"
+        },
+        "company": {
+          "asc": "A to Z",
+          "desc": "Z to A"
+        },
+        "role": {
+          "asc": "A to Z",
+          "desc": "Z to A"
+        },
+        "status": {
+          "asc": "Applied to rejected",
+          "desc": "Rejected to applied"
+        }
+      }
+    }
+  },
+  "spending": {
+    "categories": {
+      "Housing": "Housing",
+      "Groceries": "Groceries",
+      "EatingOut": "Eating out",
+      "Transport": "Transport",
+      "Subscriptions": "Subscriptions",
+      "Shopping": "Shopping",
+      "Gifts": "Gifts",
+      "Travel": "Travel",
+      "Electronics": "Electronics",
+      "Freelance": "Freelance",
+      "Sales": "Sales",
+      "Refunds": "Refunds",
+      "GiftsReceived": "Gifts received"
+    },
+    "types": {
+      "Expense": "Expense",
+      "Income": "Income"
+    }
+  },
+  "overview": {
+    "greetings": {
+      "welcomeBack": "Hi {{name}}, welcome back!",
+      "yo": "Yo! {{name}}",
+      "whatsUp": "What’s up, {{name}}?",
+      "heyThere": "Hey there, {{name}}!",
+      "goodToSeeYou": "Good to see you, {{name}}",
+      "lookWhosBack": "Look who’s back, {{name}}!",
+      "howdy": "Howdy, {{name}}!",
+      "readyToRoll": "Ready to roll, {{name}}?",
+      "helloAgain": "Hello again, {{name}}",
+      "niceToHaveYouBack": "Nice to have you back, {{name}}"
+    },
+    "loadError": "We couldn’t load your overview. Check your connection and try again.",
+    "customize": "Customize",
+    "nothingShown": "Nothing here yet. Open {{customize}} to choose what shows.",
+    "summary": {
+      "label": "At a glance",
+      "balance": "Account balance",
+      "balanceChange": "{{amount}} this month",
+      "spent": "Spent this month",
+      "noBudget": "No budget set",
+      "leftInBudget": "{{amount}} left in budget",
+      "overBudget": "{{amount}} over budget",
+      "nextDate": "Next important date",
+      "nothingComingUp": "Nothing coming up",
+      "activeApplications": "Active applications",
+      "newThisWeek": {
+        "one": "{{count}} new this week",
+        "other": "{{count}} new this week"
+      },
+      "interviews": "Interviews scheduled",
+      "nextInterview": "Next: {{date}}",
+      "noInterviews": "None scheduled"
+    },
+    "spending": {
+      "title": "Monthly spending · last {{months}} months",
+      "viewAll": "View all",
+      "chartLabel": "Total spent per month",
+      "budget": "{{month}} budget",
+      "notSet": "Not set",
+      "budgetUsed": "Budget used this month",
+      "nothingSpent": "Nothing spent yet",
+      "category": "Category",
+      "amount": "Amount"
+    },
+    "dates": {
+      "title": "Upcoming dates",
+      "add": "+ Add",
+      "addLabel": "Add a date",
+      "soon": "SOON!",
+      "empty": "No upcoming dates."
+    },
+    "applications": {
+      "title": "Job applications",
+      "empty": "No applications yet",
+      "counts": {
+        "Applied": {
+          "one": "{{count}} applied",
+          "other": "{{count}} applied"
+        },
+        "Interview": {
+          "one": "{{count}} interview",
+          "other": "{{count}} interviews"
+        },
+        "Offer": {
+          "one": "{{count}} offer",
+          "other": "{{count}} offers"
+        },
+        "Rejected": {
+          "one": "{{count}} rejected",
+          "other": "{{count}} rejected"
+        }
+      },
+      "columns": {
+        "company": "Company",
+        "role": "Role",
+        "status": "Status",
+        "location": "Location",
+        "appliedOn": "Date applied",
+        "updatedAt": "Last updated"
+      }
+    },
+    "customizeWindow": {
+      "title": "Customize overview",
+      "close": "Close customize window",
+      "show": "Show on overview",
+      "reset": "Reset",
+      "done": "Done",
+      "widgets": {
+        "summary": "At-a-glance summary",
+        "spending": "Monthly spending",
+        "dates": "Upcoming dates",
+        "applications": "Job applications"
+      }
+    }
+  },
+  "login": {
+    "pageTitle": "Log in",
+    "title": "Welcome",
+    "button": "Log in with identity provider",
+    "redirecting": "Taking you to sign in…",
+    "secureNote": "You’ll sign in on a secure page, then come straight back here.",
+    "unreachable": "We couldn’t open the sign-in page. Check your connection and try again.",
+    "sessionExpired": "Your session ended. Please sign in again to continue.",
+    "tryAgain": "Try again",
+    "callback": {
+      "pageTitle": "Signing in",
+      "signingIn": "Signing you in…",
+      "failed": "Signing in didn’t complete."
+    }
+  },
+  "nav": {
+    "sections": "Sections",
+    "overview": "Overview",
+    "finances": "Finances",
+    "calendar": "Calendar",
+    "jobApplications": "Job applications",
+    "settings": "Settings",
+    "goals": "Goals"
+  },
+  "shell": {
+    "version": "Version",
+    "signOut": "Sign out"
+  },
+  "underConstruction": {
+    "badge": "UNDER CONSTRUCTION",
+    "text": "The {{page}} page is coming soon.",
+    "back": "Back to overview"
+  },
+  "finances": {
+    "subtitle": "Every expense and income you’ve registered, month by month",
+    "accountBalance": "Account balance",
+    "addEntry": "Add entry",
+    "entriesTitle": "Entries · {{period}}",
+    "count": {
+      "one": "{{count}} entry",
+      "other": "{{count}} entries"
+    },
+    "budgetFor": "Budget for {{period}}",
+    "notSet": "Not set",
+    "used": "Used",
+    "budgetUsed": "Budget used",
+    "setBudget": "Set budget",
+    "editBudget": "Edit budget",
+    "emptyTitle": "No entries for {{period}}",
+    "emptyText": "Use Add entry to register your first entry this month.",
+    "columns": {
+      "name": "Name",
+      "type": "Type",
+      "category": "Category",
+      "amount": "Amount",
+      "createdAt": "Date created",
+      "actions": "Actions",
+      "updatedAt": "Last updated"
+    },
+    "editEntryLabel": "Edit {{name}}",
+    "totalSpent": "Total spent",
+    "balance": "Budget balance",
+    "noBudget": "No budget set",
+    "overBudget": "Over budget",
+    "withinBudget": "Within budget",
+    "entryForm": {
+      "newTitle": "New entry",
+      "editTitle": "Edit entry",
+      "registeringIn": "Registering in",
+      "entryFrom": "Entry from",
+      "name": "Name",
+      "namePlaceholder": "e.g. Weekly groceries",
+      "amount": "Amount",
+      "type": "Type",
+      "category": "Category",
+      "nameRequired": "Please give the entry a name.",
+      "amountRequired": "Please enter an amount greater than zero.",
+      "deleteTitle": "Delete “{{name}}”?",
+      "deleteText": "It will be removed from {{period}} and the totals will update. This can’t be undone.",
+      "keepEntry": "Keep entry",
+      "deleteEntry": "Delete entry",
+      "saveChanges": "Save changes",
+      "saveEntry": "Save entry"
+    },
+    "budgetForm": {
+      "setTitle": "Set budget · {{period}}",
+      "editTitle": "Edit budget · {{period}}",
+      "required": "Please enter a budget greater than zero.",
+      "save": "Save budget",
+      "caption": "Budget for",
+      "firstTime": "This month doesn’t have a budget yet. Set one to start adding entries.",
+      "amountLabel": "Monthly budget",
+      "sameAsLast": "Same as last month ({{amount}})",
+      "spentPlus10": "Spent so far + 10% ({{amount}})",
+      "alreadySpent": "Already spent {{amount}} this month",
+      "nothingSpent": "Nothing spent yet this month",
+      "used": "{{percent}}% used",
+      "set": "Set budget"
+    },
+    "setBudgetToStart": "Set budget to start",
+    "loadError": "We couldn’t load this month’s entries. Check your connection and try again.",
+    "saveError": "We couldn’t save your changes. Please try again.",
+    "countFiltered": {
+      "one": "{{shown}} of {{count}} entry",
+      "other": "{{shown}} of {{count}} entries"
+    },
+    "noBudgetTitle": "No budget for {{period}} yet",
+    "noBudgetText": "Each month has its own budget. Set one to start adding entries.",
+    "setBudgetFor": "Set budget for {{period}}",
+    "noMatchTitle": "No entries match your filters",
+    "totalEarned": "Total earned",
+    "net": "Net this month",
+    "filteredSummary": "Showing {{shown}} of {{count}} entries · net {{net}} in the shown entries",
+    "filters": {
+      "nameContains": "Name contains",
+      "namePlaceholder": "e.g. groceries",
+      "type": "Type",
+      "category": "Category",
+      "amount": "Amount",
+      "min": "Min",
+      "max": "Max",
+      "minLabel": "Minimum amount",
+      "maxLabel": "Maximum amount",
+      "to": "to",
+      "show": {
+        "one": "Show {{count}} entry",
+        "other": "Show {{count}} entries"
+      },
+      "fields": {
+        "createdAt": "Date created",
+        "updatedAt": "Last updated",
+        "name": "Name",
+        "amount": "Amount",
+        "category": "Category"
+      },
+      "orders": {
+        "createdAt": {
+          "asc": "Oldest first",
+          "desc": "Newest first"
+        },
+        "updatedAt": {
+          "asc": "Oldest first",
+          "desc": "Most recent first"
+        },
+        "name": {
+          "asc": "A to Z",
+          "desc": "Z to A"
+        },
+        "amount": {
+          "asc": "Lowest first",
+          "desc": "Highest first"
+        },
+        "category": {
+          "asc": "Expenses first",
+          "desc": "Income first"
+        }
+      }
+    }
+  },
+  "settings": {
+    "subtitle": "Make {{app}} look and work the way you like",
+    "status": {
+      "unsaved": "Unsaved changes",
+      "saved": "Changes saved",
+      "allSaved": "All changes saved",
+      "saveError": "Couldn’t save · try again"
+    },
+    "discard": "Discard",
+    "save": "Save changes",
+    "preview": "Preview",
+    "theme": {
+      "title": "Theme",
+      "description": "Background and accent color"
+    },
+    "picture": {
+      "title": "Profile",
+      "description": "Shown in the sidebar",
+      "displayName": "Display name",
+      "displayNameHint": "Shown in the sidebar and the overview. Leave it empty to use your username ({{userName}}).",
+      "options": {
+        "initials": "Initials",
+        "bubbles": "Bubbles",
+        "leaf": "Leaf",
+        "sun": "Sun",
+        "waves": "Waves",
+        "mountains": "Peaks",
+        "moon": "Moon",
+        "flower": "Flower",
+        "planet": "Planet"
+      },
+      "upload": "Upload",
+      "uploadSoon": "Uploading your own photo is coming soon",
+      "soon": "SOON"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Text and date formats",
+      "displayLanguage": "Display language",
+      "dateFormat": "Date format"
+    },
+    "currency": {
+      "title": "Currency",
+      "description": "Used across finances and budgets",
+      "main": "Main currency",
+      "showDecimals": "Show decimals",
+      "showDecimalsHint": "Display cents on amounts"
+    },
+    "timeZone": {
+      "title": "Time zone",
+      "description": "Due dates and reminders follow this",
+      "auto": "Set automatically",
+      "autoHint": "Use this device’s time zone",
+      "label": "Time zone",
+      "localTime": "Local time now",
+      "zones": {
+        "madrid": "Madrid",
+        "london": "London",
+        "newYork": "New York",
+        "mexicoCity": "Mexico City",
+        "losAngeles": "Los Angeles",
+        "tokyo": "Tokyo",
+        "utc": "UTC"
+      }
+    }
+  }
+}

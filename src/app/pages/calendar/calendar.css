@@ -1,0 +1,253 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.calendar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Header: Today, previous / next month ---------- */
+.calendar__month-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar__month-title {
+  min-width: 200px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ---------- Layout ---------- */
+.calendar__body {
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.calendar__month {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.calendar__side {
+  width: 340px;
+  flex-shrink: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Coming up ---------- */
+.calendar__upcoming {
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.calendar__upcoming-list {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 14px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.calendar__upcoming-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  font-family: inherit;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.calendar__upcoming-item:hover {
+  background: var(--color-row-stripe);
+}
+
+.calendar__upcoming-item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.calendar__upcoming-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.calendar__upcoming-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.calendar__upcoming-meta,
+.calendar__upcoming-empty {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.calendar__upcoming-empty {
+  padding: 8px;
+  font-size: 13px;
+}
+
+/* ---------- Legend ---------- */
+.calendar__legend-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendar__caption {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.calendar__legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  font-size: 13px;
+}
+
+.calendar__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calendar__legend-item--wide {
+  grid-column: span 2;
+}
+
+.calendar__swatch {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white-soft);
+}
+
+.calendar__swatch--today {
+  border-color: var(--color-white);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.calendar__swatch--events {
+  border-color: var(--color-accent-line);
+  background:
+    linear-gradient(var(--color-accent-wash), var(--color-accent-wash)), var(--color-white);
+}
+
+.calendar__swatch--past {
+  background: var(--pattern-past);
+  background-size: 11px 11px;
+}
+
+.calendar__missed-dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-highlight-glow),
+    var(--color-highlight-deep)
+  );
+}
+
+.calendar__divider {
+  height: 1px;
+  background: var(--color-track);
+}
+
+.calendar__summary {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.calendar__summary b {
+  color: var(--color-text);
+}
+
+.calendar__summary .calendar__summary-done {
+  color: var(--color-success-text);
+}
+
+/* ---------- Narrower screens: the side panel goes under the month ---------- */
+@media (max-width: 1100px) {
+  :host,
+  .calendar {
+    height: auto;
+  }
+
+  .calendar__body {
+    flex-direction: column;
+  }
+
+  .calendar__side {
+    width: auto;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .calendar__side > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .calendar__upcoming-list {
+    max-height: 320px;
+  }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 760px) {
+  .calendar__month-nav {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .calendar__month-title {
+    flex-grow: 1;
+    min-width: 0;
+    font-size: 18px;
+  }
+
+  .calendar__side {
+    flex-direction: column;
+  }
+
+  .calendar__side > * {
+    flex: none;
+  }
+}

@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.shell {
+  height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* ---------- Header ---------- */
+.shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+}
+
+.shell__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.shell__brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.shell__app-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.shell__tagline {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Body ---------- */
+.shell__body {
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.shell__aside {
+  width: 232px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.shell__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.shell__sign-out {
+  margin-top: 4px;
+}
+
+.shell__profile-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.shell__main {
+  flex-grow: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ---------- Narrow screens: stack the sidebar above the page ---------- */
+@media (max-width: 900px) {
+  .shell {
+    height: auto;
+    min-height: 100dvh;
+    padding: 16px;
+  }
+
+  .shell__body {
+    flex-direction: column;
+  }
+
+  .shell__aside {
+    width: auto;
+    overflow: visible;
+  }
+
+  .shell__main {
+    overflow: visible;
+  }
+}

@@ -1,0 +1,147 @@
+<app-modal
+  [titleText]="
+    (editing() ? 'jobApplications.form.editTitle' : 'jobApplications.form.newTitle') | transloco
+  "
+  [width]="560"
+  (closed)="confirmingDelete.set(false)"
+>
+  <app-card variant="inset" [padded]="false">
+    <div class="application-form__date">
+      <app-icon name="calendar" [size]="20" />
+      <span>{{ dateLabel() }}</span>
+    </div>
+  </app-card>
+
+  <form class="application-form" [formGroup]="form" (ngSubmit)="save()">
+    <div class="application-form__grid">
+      <app-form-field
+        [label]="'jobApplications.form.company' | transloco"
+        labelFor="application-company"
+      >
+        <app-entry
+          #companyEntry
+          inputId="application-company"
+          [placeholder]="'jobApplications.form.companyPlaceholder' | transloco"
+          formControlName="company"
+          [showValidation]="tried()"
+        />
+      </app-form-field>
+
+      <app-form-field [label]="'jobApplications.form.role' | transloco" labelFor="application-role">
+        <app-entry
+          inputId="application-role"
+          [placeholder]="'jobApplications.form.rolePlaceholder' | transloco"
+          formControlName="role"
+          [showValidation]="tried()"
+        />
+      </app-form-field>
+
+      <app-form-field
+        [label]="'jobApplications.form.location' | transloco"
+        labelFor="application-city"
+      >
+        <app-entry
+          inputId="application-city"
+          [placeholder]="'jobApplications.form.locationPlaceholder' | transloco"
+          formControlName="city"
+        />
+      </app-form-field>
+
+      <app-form-field
+        [label]="'jobApplications.form.workMode' | transloco"
+        labelFor="application-work-mode"
+      >
+        <app-select
+          selectId="application-work-mode"
+          [items]="workModeOptions()"
+          formControlName="workMode"
+        />
+      </app-form-field>
+
+      <app-form-field
+        class="application-form__wide"
+        [label]="'jobApplications.form.salary' | transloco"
+        labelFor="application-salary"
+      >
+        <app-entry
+          inputId="application-salary"
+          type="number"
+          [placeholder]="'jobApplications.form.salaryPlaceholder' | transloco"
+          [prefix]="currencySymbol()"
+          [min]="0"
+          [step]="0.01"
+          formControlName="salary"
+          [showValidation]="tried()"
+        />
+      </app-form-field>
+    </div>
+
+    <!-- Status -->
+    <div class="application-form__field">
+      <span id="application-status" class="application-form__label">
+        {{ 'jobApplications.form.status' | transloco }}
+      </span>
+      <div class="status-picker" role="radiogroup" aria-labelledby="application-status">
+        @for (status of statuses; track status.value) {
+          <button
+            type="button"
+            role="radio"
+            class="status-picker__option"
+            [class]="
+              selectedStatus() === status.value ? 'status-picker__option--' + status.tagColor : ''
+            "
+            [attr.aria-checked]="selectedStatus() === status.value"
+            (click)="pickStatus(status.value)"
+          >
+            {{ 'jobApplications.status.' + status.value | transloco }}
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (formError(); as error) {
+      <app-banner [text]="error" />
+    }
+
+    @if (confirmingDelete()) {
+      <app-delete-confirmation
+        [title]="
+          'jobApplications.form.deleteTitle' | transloco: { company: editing()?.companyName }
+        "
+        [subtitle]="'jobApplications.form.deleteText' | transloco: { period: periodLabel() }"
+        [cancelText]="'jobApplications.form.keep' | transloco"
+        (cancelled)="confirmingDelete.set(false)"
+        (confirmed)="confirmDelete()"
+      />
+    } @else {
+      <div class="application-form__footer">
+        <div>
+          @if (editing()) {
+            <app-button
+              variant="danger-outline"
+              iconName="trash"
+              [text]="'jobApplications.form.deleteApplication' | transloco"
+              (clicked)="confirmingDelete.set(true)"
+            />
+          }
+        </div>
+        <div class="application-form__footer-actions">
+          <app-button
+            variant="secondary"
+            [text]="'common.cancel' | transloco"
+            (clicked)="close()"
+          />
+          <app-button
+            type="submit"
+            [text]="
+              (editing()
+                ? 'jobApplications.form.saveChanges'
+                : 'jobApplications.form.saveApplication'
+              ) | transloco
+            "
+          />
+        </div>
+      </div>
+    }
+  </form>
+</app-modal>

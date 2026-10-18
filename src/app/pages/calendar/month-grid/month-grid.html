@@ -1,0 +1,49 @@
+<section class="month-grid" [attr.aria-label]="label()">
+  <div class="month-grid__weekdays" aria-hidden="true">
+    @for (weekday of weekdays(); track $index) {
+      <div class="month-grid__weekday">{{ weekday }}</div>
+    }
+  </div>
+
+  <div class="month-grid__grid">
+    @for (cell of cells(); track cell.key) {
+      <button
+        type="button"
+        class="month-grid__day"
+        [class.month-grid__day--outside]="!cell.inMonth"
+        [class.month-grid__day--past]="cell.past"
+        [class.month-grid__day--events]="cell.eventCount"
+        [class.month-grid__day--today]="cell.today"
+        [attr.aria-label]="cell.ariaLabel"
+        [attr.aria-current]="cell.today ? 'date' : null"
+        (click)="dayClicked.emit(cell.date)"
+      >
+        <span class="month-grid__day-head">
+          <span class="month-grid__day-number">{{ cell.date.getDate() }}</span>
+          @if (cell.today) {
+            <span class="month-grid__today-pill">{{ 'calendar.today' | transloco }}</span>
+          } @else if (cell.missed) {
+            <span
+              class="month-grid__missed-dot"
+              [title]="'calendar.cell.unfinished' | transloco"
+            ></span>
+          }
+        </span>
+        @for (chip of cell.chips; track chip.id) {
+          <span
+            class="month-grid__chip"
+            [class.month-grid__chip--done]="chip.done"
+            [class.month-grid__chip--missed]="cell.past && !chip.done"
+          >
+            {{ chip.label }}
+          </span>
+        }
+        @if (cell.more) {
+          <span class="month-grid__more">
+            {{ 'calendar.more' | transloco: { count: cell.more } }}
+          </span>
+        }
+      </button>
+    }
+  </div>
+</section>

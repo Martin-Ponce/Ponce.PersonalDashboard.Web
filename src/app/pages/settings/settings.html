@@ -1,0 +1,187 @@
+<div class="settings">
+  <app-page-header
+    [header]="'nav.settings' | transloco"
+    [subtitle]="'settings.subtitle' | transloco: { app: appName }"
+  >
+    <app-tag [labelText]="status().key | transloco" [color]="status().color" />
+    @if (dirty()) {
+      <app-button
+        variant="secondary"
+        [text]="'settings.discard' | transloco"
+        (clicked)="discard()"
+      />
+    }
+    <app-button
+      [text]="'settings.save' | transloco"
+      [isDisabled]="!dirty() || saving()"
+      (clicked)="save()"
+    />
+  </app-page-header>
+
+  <div class="settings__grid">
+    <!-- Theme -->
+    <app-card class="settings__wide" [titleText]="'settings.theme.title' | transloco">
+      <span card-actions>{{ 'settings.theme.description' | transloco }}</span>
+
+      <div class="settings__themes">
+        @for (theme of themes; track theme.key) {
+          <!-- data-theme gives each card its own theme colors -->
+          <button
+            type="button"
+            class="theme-card"
+            [class.theme-card--selected]="draft().theme === theme.key"
+            [attr.data-theme]="theme.key"
+            [attr.aria-pressed]="draft().theme === theme.key"
+            (click)="update({ theme: theme.key })"
+          >
+            <span class="theme-card__image" [class]="'theme-card__image--' + theme.key">
+              <span class="theme-card__window" aria-hidden="true">
+                <span class="theme-card__swatch"></span>
+                <span class="theme-card__line"></span>
+              </span>
+            </span>
+            <span class="theme-card__footer">
+              <span class="theme-card__name">{{ theme.labelKey | transloco }}</span>
+              <span class="theme-card__radio" aria-hidden="true"></span>
+            </span>
+          </button>
+        }
+      </div>
+    </app-card>
+
+    <!-- Profile picture -->
+    <app-card class="settings__wide" [titleText]="'settings.picture.title' | transloco">
+      <span card-actions>{{ 'settings.picture.description' | transloco }}</span>
+
+      <div class="settings__section">
+        <div class="settings__field settings__display-name">
+          <app-form-field
+            [label]="'settings.picture.displayName' | transloco"
+            variant="caption"
+            labelFor="settings-display-name"
+          >
+            <app-entry
+              inputId="settings-display-name"
+              [placeholder]="userName()"
+              [ngModel]="draft().displayName"
+              (ngModelChange)="update({ displayName: $event })"
+            />
+          </app-form-field>
+          <span class="settings__hint">
+            {{ 'settings.picture.displayNameHint' | transloco: { userName: userName() } }}
+          </span>
+        </div>
+
+        <app-profile-picture-picker
+          [name]="profileName()"
+          [picture]="draft().profilePicture"
+          (pictureChange)="update({ profilePicture: $event })"
+        />
+      </div>
+    </app-card>
+
+    <!-- Language -->
+    <app-card [titleText]="'settings.language.title' | transloco">
+      <span card-actions>{{ 'settings.language.description' | transloco }}</span>
+
+      <div class="settings__section">
+        <app-form-field
+          [label]="'settings.language.displayLanguage' | transloco"
+          variant="caption"
+          labelFor="settings-language"
+        >
+          <app-select
+            selectId="settings-language"
+            [items]="languageOptions()"
+            [ngModel]="draft().language"
+            (ngModelChange)="update({ language: $event })"
+          />
+        </app-form-field>
+
+        <div class="settings__field">
+          <span id="settings-date-format" class="settings__caption">
+            {{ 'settings.language.dateFormat' | transloco }}
+          </span>
+          <app-segmented-control
+            labelledBy="settings-date-format"
+            [options]="dateFormatOptions"
+            [value]="draft().dateFormat"
+            (valueChange)="update({ dateFormat: $event })"
+          />
+        </div>
+
+        <div class="settings__preview">
+          <span class="settings__caption">{{ 'settings.preview' | transloco }}</span>
+          <span class="settings__preview-value">{{ datePreview() }}</span>
+        </div>
+      </div>
+    </app-card>
+
+    <!-- Currency -->
+    <app-card [titleText]="'settings.currency.title' | transloco">
+      <span card-actions>{{ 'settings.currency.description' | transloco }}</span>
+
+      <div class="settings__section">
+        <app-form-field
+          [label]="'settings.currency.main' | transloco"
+          variant="caption"
+          labelFor="settings-currency"
+        >
+          <app-select
+            selectId="settings-currency"
+            [items]="currencyOptions()"
+            [ngModel]="draft().currency"
+            (ngModelChange)="update({ currency: $event })"
+          />
+        </app-form-field>
+
+        <app-toggle
+          [label]="'settings.currency.showDecimals' | transloco"
+          [description]="'settings.currency.showDecimalsHint' | transloco"
+          [checked]="draft().showDecimals"
+          (toggled)="update({ showDecimals: $event })"
+        />
+
+        <div class="settings__preview">
+          <span class="settings__caption">{{ 'settings.preview' | transloco }}</span>
+          <span class="settings__preview-value settings__preview-value--numeric">
+            {{ moneyPreview() }}
+          </span>
+        </div>
+      </div>
+    </app-card>
+
+    <!-- Time zone -->
+    <app-card class="settings__wide" [titleText]="'settings.timeZone.title' | transloco">
+      <span card-actions>{{ 'settings.timeZone.description' | transloco }}</span>
+
+      <div class="settings__time-zone">
+        <app-toggle
+          [label]="'settings.timeZone.auto' | transloco"
+          [description]="'settings.timeZone.autoHint' | transloco"
+          [checked]="draft().autoTimeZone"
+          (toggled)="update({ autoTimeZone: $event })"
+        />
+
+        <app-form-field
+          [label]="'settings.timeZone.label' | transloco"
+          variant="caption"
+          labelFor="settings-time-zone"
+        >
+          <app-select
+            selectId="settings-time-zone"
+            [items]="timeZoneOptions()"
+            [ngModel]="shownTimeZone()"
+            [disabled]="draft().autoTimeZone"
+            (ngModelChange)="update({ timeZone: $event })"
+          />
+        </app-form-field>
+
+        <div class="settings__preview">
+          <span class="settings__caption">{{ 'settings.timeZone.localTime' | transloco }}</span>
+          <span class="settings__preview-value">{{ timePreview() }}</span>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

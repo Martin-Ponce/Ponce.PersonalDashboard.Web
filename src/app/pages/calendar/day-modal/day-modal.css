@@ -1,0 +1,143 @@
+.day__past-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--pattern-past);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.day__section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.day__caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.day__count {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Events ---------- */
+.day__events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day__event {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white-soft);
+}
+
+.day__event-text {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.day__event-title {
+  font-size: 15px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.day__event-title--done {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.day__event-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.day__empty {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px dashed var(--color-border-strong);
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Add an event ---------- */
+.day__add {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.day__add-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.day__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.day__field--title {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.day__field--time {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.day__label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.day__optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.day__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 560px) {
+  .day__add-row {
+    flex-wrap: wrap;
+  }
+
+  .day__field--title {
+    flex-basis: 100%;
+  }
+
+  .day__field--time {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,76 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# mcp.json is not shared: MCP server entries often carry API keys or tokens.
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# ---------- Secrets and machine-local settings: never commit ----------
+# Everything the app itself needs is public (see README, "Runtime configuration"); anything
+# matching below is either a credential or one person's local setup.
+
+# Environment files (keep a sanitized .env.example if one is ever needed)
+.env
+.env.*
+!.env.example
+
+# Certificates and private keys (e.g. a local HTTPS dev certificate)
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+
+# npm credentials: an .npmrc with an auth token for a private registry
+.npmrc
+
+# Local Docker overrides (ports, volumes, real values)
+docker-compose.override.yml
+compose.override.yaml
+
+# Logs can contain tokens or personal data from requests
+*.log
+logs/
+
+# AI assistant personal settings (shared launch.json stays tracked)
+.claude/settings.local.json
+CLAUDE.local.md
