@@ -4,7 +4,7 @@
 
 ## English
 
-The frontend of a personal-use app I made so I can add random useful things I'd like to keep track of in a single place. You can find the backend here: Ponce.PersonalDashboard.Core (add repo link). Security is handled by my identity provider, which you can check out here: Ponce.IdentityProvider (add repo link).
+The frontend of a personal-use app I made so I can add random useful things I'd like to keep track of in a single place. You can find the backend here: [Ponce.PersonalDashboard.Core](https://github.com/Martin-Ponce/Ponce.PersonalDashboard.Core.git). Security is handled by my identity provider, which you can check out here: [Ponce.IdentityProvider](https://github.com/Martin-Ponce/Ponce.IdentityProvider.git).
 
 So far the features include:
 - [Overview](#overview)
